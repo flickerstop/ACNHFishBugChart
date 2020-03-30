@@ -1,0 +1,39 @@
+*{
+    font-family: Tahoma;
+}
+
+body{
+    background-color: #272727;
+}
+
+#dateSelector{
+    color: black;
+}
+
+.card{
+    width: 150px;
+    height: 175px;
+    background-color: darkblue;
+    margin: 10px;
+    float: left;
+    border-radius: 15px;
+    color: white;
+}
+
+.card .image{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 150px;
+    height: 100px;
+    background-color: darkgreen;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.card .name{
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+
+}

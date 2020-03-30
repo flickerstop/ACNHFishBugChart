@@ -27,7 +27,7 @@ for(let bugRow of bugRows){
     bugsJson.push(bugData);
 }
 
-fs.writeJSONSync("./bugs.json",bugsJson, {spaces: "\t"});
+//fs.writeJSONSync("./bugs.json",bugsJson, {spaces: "\t"});
 
 //////////////////////////////////
 // fish 
@@ -47,15 +47,16 @@ for(let fishRow of fishRows){
         id: fishRow[0],
         name: fishRow[1],
         found: fishRow[2],
-        price: fishRow[3],
-        timeString: fishRow[4],
-        time:fishRow[5],
-        dateStringN:fishRow[6],
-        dateStringS:fishRow[7],
-        dateN:fishRow[8],
-        dateS:fishRow[9]
+        size: fishRow[3],
+        price: fishRow[4],
+        timeString: fishRow[5],
+        time:fishRow[6],
+        dateStringN:fishRow[7],
+        dateStringS:fishRow[8],
+        dateN:fishRow[9],
+        dateS:fishRow[10]
     }
     fishJson.push(fishData);
 }
 
-fs.writeJSONSync("./fish.json",fishJson, {spaces: "\t"});
+//fs.writeJSONSync("./fish.json",fishJson, {spaces: "\t"});

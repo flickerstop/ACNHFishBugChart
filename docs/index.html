@@ -1,1 +1,190 @@
-<h1>test</h1>
+<html>
+    <head>
+        <!--*********************************************
+        *                 Imports
+        **********************************************-->
+        <title>ACNH Fish and Bug Chart</title>
+        <!-- <link rel="shortcut icon" type="image/png" href="./images/icons/favicon.ico"/> -->
+        <script src="./js/externalLibs/jquery-3.4.1.min.js"></script>
+        <script src="./js/externalLibs/d3.min.js"></script>
+
+
+        <link rel="stylesheet" href="./css/main.css">
+
+        <script src="./js/main.js"></script>
+        
+    </head>
+    <body>
+
+
+        <!--*********************************************
+        *                 Top Bar
+        **********************************************-->
+        <div id="topBar">
+            Top Bar
+        </div>
+
+        <!--*********************************************
+        *                 Main Body
+        **********************************************-->
+        
+        <div id="body">
+            <div id="dateSelector">
+                Month:
+                <select id="month" onchange="checkDate()">
+                    <option selected value='1'>Janaury</option>
+                    <option value='2'>February</option>
+                    <option value='3'>March</option>
+                    <option value='4'>April</option>
+                    <option value='5'>May</option>
+                    <option value='6'>June</option>
+                    <option value='7'>July</option>
+                    <option value='8'>August</option>
+                    <option value='9'>September</option>
+                    <option value='10'>October</option>
+                    <option value='11'>November</option>
+                    <option value='12'>December</option>
+                </select>
+                Time (24 hour):
+                <input id="time" type="number" min="0" max="23" value="0" onchange="checkDate()">
+            </div>
+            <div id="fishCards">
+                Pick month/time
+            </div>
+
+            <div id="BugCards">
+                Pick month/time
+            </div>
+        </div>
+
+        <!--*********************************************
+        *                 Footer
+        **********************************************-->
+        <!-- <div id="footer" class="noHighlight">
+            Made by Flickerstop & Nuuka
+        </div> -->
+    </body>
+
+    <script>
+        let fishData = null;
+        let bugData = null;
+
+        $( document ).ready(function() {
+            $.getJSON("../json/fish.json", function(result){
+                fishData = result;
+            });
+            $.getJSON("../json/bugs.json", function(result){
+                bugData = result;
+            });
+        });
+
+        function checkDate(){
+            d3.select("#fishCards").html(null);
+            d3.select("#bugCards").html(null);
+
+            let currentMonth = parseInt(d3.select("#month").node().value);
+            let currentTime = parseInt(d3.select("#time").node().value);
+
+            let catchable = getAllCatch(currentMonth,currentTime,"north");
+
+            for(let fish of catchable.fish){
+                addFishCard(fish);
+            }
+
+            for(let bug of catchable.bugs){
+                addBugCard(bug);
+            }
+        }
+
+
+        function getAllCatch(month,time,hemisphere){
+            //Look for fish
+            let fishFound = [];
+            for(let fish of fishData){
+                //check for north hemisphere
+                if(hemisphere == "north"){
+                    //check if correct month
+                    if(fish.dateN.includes(month) || fish.dateN.includes(-1)){
+                        //check if correct time
+                        if(fish.time.includes(time) || fish.time.includes(-1)){
+                            fishFound.push(fish);
+                        }
+                    }
+                }else if(hemisphere == "south"){
+                    //check if correct month
+                    if(fish.dateS.includes(month) || fish.dateS.includes(-1)){
+                        //check if correct time
+                        if(fish.time.includes(time) || fish.time.includes(-1)){
+                            fishFound.push(fish);
+                        }
+                    }
+                }
+            }
+            /////////////////////////////////////////////////
+            let bugsFound = [];
+            for(let bug of bugData){
+                //check for north hemisphere
+                if(hemisphere == "north"){
+                    //check if correct month
+                    if(bug.dateN.includes(month) || bug.dateN.includes(-1)){
+                        //check if correct time
+                        if(bug.time.includes(time) || bug.time.includes(-1)){
+                            bugsFound.push(bug);
+                        }
+                    }
+                }else if(hemisphere == "south"){
+                    //check if correct month
+                    if(bug.dateS.includes(month) || bug.dateS.includes(-1)){
+                        //check if correct time
+                        if(bug.time.includes(time) || bug.time.includes(-1)){
+                            bugsFound.push(bug);
+                        }
+                    }
+                }
+            }
+
+            return {
+                fish: fishFound,
+                bugs: bugsFound
+            }
+        }
+
+
+        function addFishCard(fish){
+            let card = d3.select("#bugCards").append("div").attr("class","card");
+
+            card.append("div")
+                .attr("class","image")
+                .attr("style","background-image: url(\"../images/fish/"+fish.name+".png\")")
+
+            card.append("div")
+                .attr("class","name")
+                .html(fish.name);
+
+            card.append("div")
+                .attr("class","location")
+                .html(fish.found);
+
+            card.append("div")
+                .attr("class","size")
+                .html(fish.size);
+        }
+
+        function addBugCard(bug){
+            let card = d3.select("#bugCards").append("div").attr("class","card");
+
+            card.append("div")
+                .attr("class","image")
+                .attr("style","background-image: url(\"../images/bugs/"+bug.name+".png\")")
+
+            card.append("div")
+                .attr("class","name")
+                .html(bug.name);
+
+            card.append("div")
+                .attr("class","location")
+                .html(bug.found);
+
+        }
+    </script>
+</html>
