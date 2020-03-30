@@ -70,10 +70,10 @@
         let bugData = null;
 
         $( document ).ready(function() {
-            $.getJSON("../json/fish.json", function(result){
+            $.getJSON("https://raw.githubusercontent.com/flickerstop/ACNHFishBugChart/master/docs/json/fish.json", function(result){
                 fishData = result;
             });
-            $.getJSON("../json/bugs.json", function(result){
+            $.getJSON("https://raw.githubusercontent.com/flickerstop/ACNHFishBugChart/master/docs/json/bugs.json", function(result){
                 bugData = result;
             });
         });
