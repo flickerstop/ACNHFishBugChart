@@ -70,10 +70,10 @@
         let bugData = null;
 
         $( document ).ready(function() {
-            $.getJSON("https://raw.githubusercontent.com/flickerstop/ACNHFishBugChart/master/docs/json/fish.json", function(result){
+            $.getJSON("./json/fish.json", function(result){
                 fishData = result;
             });
-            $.getJSON("https://raw.githubusercontent.com/flickerstop/ACNHFishBugChart/master/docs/json/bugs.json", function(result){
+            $.getJSON("./json/bugs.json", function(result){
                 bugData = result;
             });
         });
@@ -175,7 +175,7 @@
 
             card.append("div")
                 .attr("class","image")
-                .attr("style","background-image: url(\"../images/bugs/"+bug.name+".png\")")
+                .attr("style","background-image: url(\"./images/bugs/"+bug.name+".png\")")
 
             card.append("div")
                 .attr("class","name")
