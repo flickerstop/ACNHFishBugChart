@@ -27,6 +27,8 @@
         <script>
         mdc.textField.MDCTextField.attachTo(document.querySelector('.mdc-text-field'));
         </script>
+        <script src="./js/storage.js"></script>
+        
     </head>
     <body>
         <div class="mdc-card card">
@@ -91,6 +93,10 @@
                 </select>
                 Time (24 hour):
                 <input id="time" type="number" min="0" max="23" value="0" onchange="checkDate()">
+
+                <div id="hideDonateButton" onclick="unhideDonated()">Hide: true</div>
+
+                <div id="hemisphereButton" onclick="swapHemisphere()">Is North: true</div>
             </div>
             <div id="fishCards">
                 Pick month/time
@@ -112,123 +118,24 @@
     <script>
         let fishData = null;
         let bugData = null;
+        let webStorage = null;
 
         $( document ).ready(function() {
-            $.getJSON("./json/fish.json", function(result){
-                fishData = result;
+            $.getJSON("./json/fish.json", function(fishResult){
+                // save the data for all the fish
+                fishData = fishResult;
+                $.getJSON("./json/bugs.json", function(bugResult){
+                    // save the data for all the bugs
+                    bugData = bugResult;
+
+                    // Load the list of donated critters
+                    webStorage = load();
+
+                    // check the current date
+                    checkDate();
+                });
             });
-            $.getJSON("./json/bugs.json", function(result){
-                bugData = result;
-            });
+            
         });
-
-        function checkDate(){
-            d3.select("#fishCards").html(null);
-            d3.select("#bugCards").html(null);
-
-            let currentMonth = parseInt(d3.select("#month").node().value);
-            let currentTime = parseInt(d3.select("#time").node().value);
-
-            let catchable = getAllCatch(currentMonth,currentTime,"north");
-
-            for(let fish of catchable.fish){
-                addFishCard(fish);
-            }
-
-            for(let bug of catchable.bugs){
-                addBugCard(bug);
-            }
-        }
-
-
-        function getAllCatch(month,time,hemisphere){
-            //Look for fish
-            let fishFound = [];
-            for(let fish of fishData){
-                //check for north hemisphere
-                if(hemisphere == "north"){
-                    //check if correct month
-                    if(fish.dateN.includes(month) || fish.dateN.includes(-1)){
-                        //check if correct time
-                        if(fish.time.includes(time) || fish.time.includes(-1)){
-                            fishFound.push(fish);
-                        }
-                    }
-                }else if(hemisphere == "south"){
-                    //check if correct month
-                    if(fish.dateS.includes(month) || fish.dateS.includes(-1)){
-                        //check if correct time
-                        if(fish.time.includes(time) || fish.time.includes(-1)){
-                            fishFound.push(fish);
-                        }
-                    }
-                }
-            }
-            /////////////////////////////////////////////////
-            let bugsFound = [];
-            for(let bug of bugData){
-                //check for north hemisphere
-                if(hemisphere == "north"){
-                    //check if correct month
-                    if(bug.dateN.includes(month) || bug.dateN.includes(-1)){
-                        //check if correct time
-                        if(bug.time.includes(time) || bug.time.includes(-1)){
-                            bugsFound.push(bug);
-                        }
-                    }
-                }else if(hemisphere == "south"){
-                    //check if correct month
-                    if(bug.dateS.includes(month) || bug.dateS.includes(-1)){
-                        //check if correct time
-                        if(bug.time.includes(time) || bug.time.includes(-1)){
-                            bugsFound.push(bug);
-                        }
-                    }
-                }
-            }
-
-            return {
-                fish: fishFound,
-                bugs: bugsFound
-            }
-        }
-
-
-        function addFishCard(fish){
-            let card = d3.select("#bugCards").append("div").attr("class","card");
-
-            card.append("div")
-                .attr("class","image")
-                .attr("style","background-image: url(\"./images/fish/"+fish.name+".png\")")
-
-            card.append("div")
-                .attr("class","name")
-                .html(fish.name);
-
-            card.append("div")
-                .attr("class","location")
-                .html(fish.found);
-
-            card.append("div")
-                .attr("class","size")
-                .html(fish.size);
-        }
-
-        function addBugCard(bug){
-            let card = d3.select("#bugCards").append("div").attr("class","card");
-
-            card.append("div")
-                .attr("class","image")
-                .attr("style","background-image: url(\"./images/bugs/"+bug.name+".png\")")
-
-            card.append("div")
-                .attr("class","name")
-                .html(bug.name);
-
-            card.append("div")
-                .attr("class","location")
-                .html(bug.found);
-
-        }
     </script>
 </html>
