@@ -86,6 +86,11 @@ function addFishCard(fish){
     // Info section
     let cardInfo = card.append("div").attr("class","card-info");
 
+    let cardInfoLocation = cardInfo.append("div").attr("class","card-info-row");
+
+    cardInfoLocation.append("div").attr("class","card-info-row-name").html("Location");
+    cardInfoLocation.append("div").attr("class","card-info-row-data").html(fish.found);
+
     // Months
     let cardInfoMonths = cardInfo.append("div").attr("class","card-info-row");
 
