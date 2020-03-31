@@ -27,8 +27,8 @@ function getAllCatch(month,time){
     let fishFound = [];
     for(let fish of fishData){
         // Check if the fish is found in this month for either the north or south hemisphere
-        if((fish.dateN.includes(month) || fish.dateN.includes(-1)) || // North
-           (fish.dateS.includes(month) || fish.dateS.includes(-1))){ // South
+        if(((fish.dateN.includes(month) || fish.dateN.includes(-1)) && webStorage.settings.hemisphere == "north") || // North
+           ((fish.dateS.includes(month) || fish.dateS.includes(-1)) && webStorage.settings.hemisphere == "south")){ // South
             //check if correct time
             if(fish.time.includes(time) || fish.time.includes(-1)){
                 //check if not donated
@@ -43,8 +43,8 @@ function getAllCatch(month,time){
     let bugsFound = [];
     for(let bug of bugData){
         // Check if the bug is found in this month for either the north or south hemisphere
-        if((bug.dateN.includes(month) || bug.dateN.includes(-1)) || // North
-           (bug.dateS.includes(month) || bug.dateS.includes(-1))){  // South
+        if(((bug.dateN.includes(month) || bug.dateN.includes(-1)) && webStorage.settings.hemisphere == "north") || // North
+           ((bug.dateS.includes(month) || bug.dateS.includes(-1)) && webStorage.settings.hemisphere == "south")){ // South
             //check if correct time
             if(bug.time.includes(time) || bug.time.includes(-1)){
                 //check if not donated
