@@ -39,6 +39,7 @@ function load(){
             timeTraveller: false,
             sorting: "default"
         }
+        save("No settings, saving default");
     }
 
 
