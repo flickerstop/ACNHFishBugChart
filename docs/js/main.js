@@ -65,28 +65,44 @@ function getAllCatch(month,time){
 
 
 function addFishCard(fish){
-    let card = d3.select("#bugCards").append("div").attr("class","card");
+    let card = d3.select("#bugCards")
+                    .append("div").attr("class","mdc-card card")
+                    .append("div").attr("class","mdc-card__primary-action");
 
-    card.append("div")
-        .attr("class","image")
-        .attr("style","background-image: url(\"./images/fish/"+fish.name+".png\")")
+    // Div for the critter image
+    let cardImage = card.append("div").attr("class","mdc-card__media card-image")
+                    .style("background-image",`url('./images/fish/${fish.name}.png')`);
 
-    card.append("div")
-        .attr("class","name")
-        .html(fish.name);
+    // Image Title
+    cardImage.append("div").attr("class","card-title")
+        .append("div").attr("class","card-title-text").html(fish.name);
 
-    card.append("div")
-        .attr("class","location")
-        .html(fish.found);
+    // If Donated
+    cardImage.append("div").append("img").attr("class","card-owl-status").attr("src","./images/owlIconBrown.png");
 
-    card.append("div")
-        .attr("class","size")
-        .html(fish.size);
+    // Price
+    cardImage.append("div").attr("class","card-bells").html(`${fish.price}<img src="./images/bellBag.png">`);
 
-    card.append("div")
-        .attr("class","donateButton")
-        .html("click")
-        .on("click",()=>{return markDonate("fish",fish.id)});
+    // Info section
+    let cardInfo = card.append("div").attr("class","card-info");
+
+    // Months
+    let cardInfoMonths = cardInfo.append("div").attr("class","card-info-row");
+
+    cardInfoMonths.append("div").attr("class","card-info-row-name").html("Months");
+    //FIXME: Hardcoded to north hemisphere
+    cardInfoMonths.append("div").attr("class","card-info-row-data").html(fish.dateStringN);
+
+    // Time
+    let cardInfoTime = cardInfo.append("div").attr("class","card-info-row");
+    cardInfoTime.append("div").attr("class","card-info-row-name").html("Time");
+    cardInfoTime.append("div").attr("class","card-info-row-data").html(fish.timeString);
+
+
+    // card.append("div")
+    //     .attr("class","donateButton")
+    //     .html("click")
+    //     .on("click",()=>{return markDonate("fish",fish.id)});
 }
 
 function addBugCard(bug){
