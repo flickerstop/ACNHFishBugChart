@@ -978,7 +978,7 @@
 		"id": "76",
 		"name": "Suckerfish",
 		"found": "Sea",
-		"size": "(Fin)",
+		"size": "Large (Fin)",
 		"price": "1,500",
 		"timeString": "All day",
 		"time": [-1],

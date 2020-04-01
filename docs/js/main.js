@@ -82,6 +82,13 @@ function addFishCard(fish){
         cardImage.append("div").append("img").attr("class","card-owlstamp").attr("src","./images/owlStampBrown.png");
     }
 
+    // Fish Size
+    let cardFishSize = cardImage.append("div").attr("class","card-fishsize");
+    cardFishSize.append("img").attr("src", `./images/fishSize/${fish.size}.png`);
+    cardFishSize.append("br");
+    cardFishSize.append("div").html(fish.size);
+
+
     // Price
     cardImage.append("div").attr("class","card-bells").html(`${fish.price}<img src="./images/bellBag.png">`);
 

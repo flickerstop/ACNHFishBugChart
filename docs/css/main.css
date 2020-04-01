@@ -54,15 +54,21 @@ body{
     border-radius: 3px;
 }
 
-/* .card-owlstamp{
-    width: 40px;
+.card-fishsize{
     float: left;
     position: absolute;
     bottom: 0px;
-    margin: 6px;
-    filter: drop-shadow(0px 0px 0.5px #222222);
-} */
-
+    padding: 1px 7px;
+    font-size: 10px;
+    text-align: center;
+    pointer-events: none;
+}
+.card-fishsize img{
+    width: 37px;
+    margin: -25px 30px;
+    filter: drop-shadow(0px 0px 0.5px #22222290);
+    transform: rotate(-90deg);
+}
 .card-owlstamp{
     width: 250px;
     position: absolute;
