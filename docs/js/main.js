@@ -114,11 +114,17 @@ function addFishCard(fish){
     let northHemisphereOption = true;
     let fishMonthData = northHemisphereOption ? fish.dateN : fish.dateS;
 
+    if (fish.id == "74")
+    {
+        console.log(fishMonthData);
+    }
     let monthDataRow = cardInfoMonthsData.append("div").attr("class", "card-info-row-monthdata");
     for (let i = 1; i <= 12; i++) {
-        if (i == 5 || i == 9)
-        monthDataRow = cardInfoMonthsData.append("div").attr("class", "card-info-row-monthdata");
-        if (i in fishMonthData || fishMonthData[0] == -1){
+        if (i == 5 || i == 9){
+            monthDataRow = cardInfoMonthsData.append("div").attr("class", "card-info-row-monthdata");
+        }
+
+        if (fishMonthData.includes(i) || fishMonthData[0] == -1){
             monthDataRow.append("div")
                 .attr("class","card-info-month-checked")
                 .html(months[i]);
