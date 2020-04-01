@@ -12,13 +12,25 @@ body{
     /* background-color: #4fbaa0; */
     /* background-color: #f1e9be; */
     /* background-color: #e6d596; */
-    background-color: #30a774;
+    background-color: #80d5ac;
+    background-image: url(/images/fish-background.png);
+    background-size:  185px;
+    margin: 0px;
 }
 
+#body{
+    padding: 0px 10px;
+}
 #dateSelector{
     color: black;
 }
 
+
+.top-bar{
+	background-color: #30a774;
+    padding: 10px;
+    margin-bottom: 20px;
+}
 /* #region Card */
 
 .card{
