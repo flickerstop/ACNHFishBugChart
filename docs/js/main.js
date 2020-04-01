@@ -118,7 +118,7 @@ function addFishCard(fish){
     for (let i = 1; i <= 12; i++) {
         if (i == 5 || i == 9)
         monthDataRow = cardInfoMonthsData.append("div").attr("class", "card-info-row-monthdata");
-        if (i in fishMonthData){
+        if (i in fishMonthData || fishMonthData[0] == -1){
             monthDataRow.append("div")
                 .attr("class","card-info-month-checked")
                 .html(months[i]);
