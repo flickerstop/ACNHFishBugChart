@@ -13,7 +13,7 @@ body{
     /* background-color: #f1e9be; */
     /* background-color: #e6d596; */
     background-color: #80d5ac;
-    background-image: url(/images/fish-background.png);
+    background-image: url(../images/fish-background.png);
     background-size:  185px;
     margin: 0px;
 }
