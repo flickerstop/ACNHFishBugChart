@@ -78,7 +78,7 @@ function addFishCard(fish){
         .append("div").attr("class","card-title-text").html(fish.name);
 
     // If Donated
-    cardImage.append("div").append("img").attr("class","card-owl-status").attr("src","./images/owlIconBrown.png");
+    cardImage.append("div").append("img").attr("class","card-owlstamp").attr("src","./images/owlStampBrown.png");
 
     // Price
     cardImage.append("div").attr("class","card-bells").html(`${fish.price}<img src="./images/bellBag.png">`);
@@ -86,23 +86,49 @@ function addFishCard(fish){
     // Info section
     let cardInfo = card.append("div").attr("class","card-info");
 
+    // Location
     let cardInfoLocation = cardInfo.append("div").attr("class","card-info-row");
 
     cardInfoLocation.append("div").attr("class","card-info-row-name").html("Location");
     cardInfoLocation.append("div").attr("class","card-info-row-data").html(fish.found);
-
-    // Months
-    let cardInfoMonths = cardInfo.append("div").attr("class","card-info-row");
-
-    cardInfoMonths.append("div").attr("class","card-info-row-name").html("Months");
-    //FIXME: Hardcoded to north hemisphere
-    cardInfoMonths.append("div").attr("class","card-info-row-data").html(fish.dateStringN);
 
     // Time
     let cardInfoTime = cardInfo.append("div").attr("class","card-info-row");
     cardInfoTime.append("div").attr("class","card-info-row-name").html("Time");
     cardInfoTime.append("div").attr("class","card-info-row-data").html(fish.timeString);
 
+
+    // Months
+    let cardInfoMonths = cardInfo.append("div").attr("class","card-info-row");
+
+    cardInfoMonths.append("div").attr("class","card-info-row-name")
+        .attr("style", "line-height: 4;").html("Months");
+    //FIXME: Hardcoded to north hemisphere
+    //cardInfoMonths.append("div").attr("class","card-info-row-data").html(fish.dateStringN);
+    
+    let cardInfoMonthsData = cardInfoMonths.append("div").attr("style", "width: 160px;");
+    
+    let months = {1:"Jan",2:"Feb",3:"Mar",4:"Apr",5:"May",6:"Jun",7:"Jul",8:"Aug",9:"Sep",10:"Oct",11:"Nov",12:"Dec"};
+    let northHemisphereOption = true;
+    let fishMonthData = northHemisphereOption ? fish.dateN : fish.dateS;
+
+    let monthDataRow = cardInfoMonthsData.append("div").attr("class", "card-info-row-monthdata");
+    for (let i = 1; i <= 12; i++) {
+        if (i == 5 || i == 9)
+        monthDataRow = cardInfoMonthsData.append("div").attr("class", "card-info-row-monthdata");
+        if (i in fishMonthData){
+            monthDataRow.append("div")
+                .attr("class","card-info-month-checked")
+                .html(months[i]);
+        }else{
+            monthDataRow.append("div")
+                .html(months[i]);
+        }
+    }
+    
+
+
+    
 
     // card.append("div")
     //     .attr("class","donateButton")

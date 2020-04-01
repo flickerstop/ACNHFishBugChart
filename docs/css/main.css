@@ -1,7 +1,8 @@
 @font-face {
     font-family: "Humming";
     src: url(./fonts/humming.otf) format("opentype");
-  }
+}
+
 *{
     font-family: Humming;
     line-height: 1.5;
@@ -9,12 +10,15 @@
 
 body{
     /* background-color: #4fbaa0; */
-    background-color: #f1e9be;
+    /* background-color: #f1e9be; */
+    background-color: #e6d596;
 }
 
 #dateSelector{
     color: black;
 }
+
+/* #region Card */
 
 .card{
     width: 300px;
@@ -25,6 +29,11 @@ body{
     color: black;
 }
 
+.card-image{
+    width: 300px;
+    height: 170px;
+}
+
 .card-title{
     width: fit-content;
     padding: 3px;
@@ -33,8 +42,9 @@ body{
     margin-right: auto;
     border-radius: 3px;
     background: #fffdf2c5;
-    transform: rotate(-5deg);
+    transform: rotate(-2deg);
 }
+
 .card-title-text{
     font-size: 18px;
     color: #504d44;
@@ -43,13 +53,24 @@ body{
     border-radius: 3px;
 }
 
-.card-owl-status{
+/* .card-owlstamp{
     width: 40px;
     float: left;
     position: absolute;
     bottom: 0px;
     margin: 6px;
     filter: drop-shadow(0px 0px 0.5px #222222);
+} */
+
+.card-owlstamp{
+    width: 250px;
+    position: absolute;
+    bottom: -58px;
+    left: 18px;
+    margin: 6px;
+    opacity: 0.45;
+    transform: rotate(14deg);
+    pointer-events: none;
 }
 
 .card-bells{
@@ -59,20 +80,26 @@ body{
     margin: 7px;
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 16px;
 }
+
 .card-bells img{
-    width: 26px;
+    width: 35px;
     margin-left: 4;
+    margin-top: -6px;
+    pointer-events: none;
 }
+
 .card-info{
     padding: 5px;
     background:#f5f6e1;
 }
+
 .card-info-row{
     display: flex;
     margin-bottom: 1px;
 }
+
 .card-info-row-name,
 .card-info-row-data{
     width: 50%;
@@ -82,20 +109,35 @@ body{
     margin: 0px 2px;
     font-size: 14px;
 }
+
 .card-info-row-name{
     color: #f5f6e1;
     background:#8a7b66;
+    font-size: 16px;
 }
+
 .card-info-row-data{
     color: #8a7b66;
-    background:#f5f6e1;
-}
-.card-image{
-    width: 300px;
-    height: 170px;
 }
 
+.card-info-row-monthdata{
+    display: flex;
+    font-size: 12px;
+}
 
+.card-info-row-monthdata div{
+    width: 28px;
+    padding: 3px;
+    border-radius: 5px;
+    margin: 1px;
+    text-align: center;
+    color: #8a7b66;
+}
+
+.card-info-month-checked{
+    color: #f5f6e1 !important;
+    background: #c19251;
+}
 
 .card .image{
     border-top-left-radius: 15px;
@@ -119,6 +161,8 @@ body{
     background-color: chocolate;
     cursor: pointer;
 }
+
+/* #endregion */
 
 #hideDonateButton{
     background-color: #3498db;
