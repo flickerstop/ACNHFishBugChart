@@ -78,7 +78,9 @@ function addFishCard(fish){
         .append("div").attr("class","card-title-text").html(fish.name);
 
     // If Donated
-    cardImage.append("div").append("img").attr("class","card-owlstamp").attr("src","./images/owlStampBrown.png");
+    if(webStorage.donated.fish.includes(fish.id)){
+        cardImage.append("div").append("img").attr("class","card-owlstamp").attr("src","./images/owlStampBrown.png");
+    }
 
     // Price
     cardImage.append("div").attr("class","card-bells").html(`${fish.price}<img src="./images/bellBag.png">`);
@@ -130,10 +132,7 @@ function addFishCard(fish){
 
     
 
-    // card.append("div")
-    //     .attr("class","donateButton")
-    //     .html("click")
-    //     .on("click",()=>{return markDonate("fish",fish.id)});
+    card.on("click",()=>{return markDonate("fish",fish.id)});
 }
 
 function addBugCard(bug){
