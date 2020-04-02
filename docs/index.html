@@ -5,28 +5,17 @@
         **********************************************-->
         <title>ACNH Fish and Bug Chart</title>
         <link rel="shortcut icon" type="image/png" href="./favicon.ico"/>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+        <link rel="stylesheet" href="./css/main.css">
+        
+        <!-- Javascript -->
         <script src="./js/externalLibs/jquery-3.4.1.min.js"></script>
+        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
         <script src="./js/externalLibs/d3.min.js"></script>
 
-        <link rel="stylesheet" href="./css/main.css">
-
         <script src="./js/main.js"></script>
-        <!-- Required styles for MDC Web -->
-        <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
-
-        <!-- Render textfield component -->
-        <!-- <label class="mdc-text-field">
-        <input type="text" class="mdc-text-field__input" aria-labelledby="my-label">
-        <span class="mdc-floating-label" id="my-label">Label</span>
-        <div class="mdc-line-ripple"></div>
-        </label> -->
-
-        <!-- Required MDC Web JavaScript library -->
-        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-        <!-- Instantiate single textfield component rendered in the document -->
-        <script>
-        mdc.textField.MDCTextField.attachTo(document.querySelector('.mdc-text-field'));
-        </script>
         <script src="./js/storage.js"></script>
         
     </head>
@@ -34,8 +23,10 @@
         <!--*********************************************
         *                 Top Bar
         **********************************************-->
-        <div id="topBar">
-            Top Bar
+        <div id="topBar" class="top-bar mdc-elevation--z1">
+            <div id="fish-bug-switch" class="fish-bug-switch">
+                <div class="fish-bug-switch-selected"></div>
+            </div>
         </div>
 
         <!--*********************************************
@@ -66,11 +57,8 @@
 
                 <div id="hemisphereButton" onclick="swapHemisphere()">Is North: true</div>
             </div>
-            <div id="fishCards">
-                Pick month/time
-            </div>
 
-            <div id="BugCards">
+            <div id="critterCards">
                 Pick month/time
             </div>
         </div>
@@ -84,26 +72,8 @@
     </body>
 
     <script>
-        let fishData = null;
-        let bugData = null;
-        let webStorage = null;
-
         $( document ).ready(function() {
-            $.getJSON("./json/fish.json", function(fishResult){
-                // save the data for all the fish
-                fishData = fishResult;
-                $.getJSON("./json/bugs.json", function(bugResult){
-                    // save the data for all the bugs
-                    bugData = bugResult;
-
-                    // Load the list of donated critters
-                    webStorage = load();
-
-                    // check the current date
-                    checkDate();
-                });
-            });
-            
+            init();
         });
     </script>
 </html>
