@@ -1,3 +1,46 @@
+// GLOBALS
+let fishData = null;
+let bugData = null;
+let webStorage = null;
+let filter = {month: -1, time:-1};
+let toggleCritter = false;
+
+
+function init(){
+    mdc.autoInit();
+    //mdc.switchControl.MDCSwitch.attachTo(document.querySelector('.mdc-switch'));
+
+    $('.fish-bug-switch-selected').toggleClass('fish');
+    $("#fish-bug-switch").click(function() {
+        $('.fish-bug-switch-selected').toggleClass('bug');
+        $('.fish-bug-switch-selected').toggleClass('fish');
+    });
+
+    $.getJSON("./json/fish.json", function(fishResult){
+        // load the data for all the fish
+        fishData = fishResult;
+        $.getJSON("./json/bugs.json", function(bugResult){
+            // load the data for all the bugs
+            bugData = bugResult;
+
+            // Load the list of donated critters
+            webStorage = load();
+
+
+            renderCritterCards(filter, true)
+        });
+    });
+}
+
+function renderCritterCards(filter, renderFish){
+    d3.select("#critterCards").html(null);
+
+    let filteredList = filterCritterList(filter, renderFish);
+
+    for(let critter of filteredList){
+        addCritterCard(critter, renderFish)
+    }
+}
 
 function checkDate(){
     d3.select("#fishCards").html(null);
@@ -6,7 +49,7 @@ function checkDate(){
     let currentMonth = parseInt(d3.select("#month").node().value);
     let currentTime = parseInt(d3.select("#time").node().value);
 
-    let catchable = getAllCatch(currentMonth,currentTime,webStorage.settings.hemisphere);
+    let catchable = filterCritterList(currentMonth,currentTime,webStorage.settings.hemisphere);
 
     for(let fish of catchable.fish){
         addFishCard(fish);
@@ -22,75 +65,92 @@ function checkDate(){
  * @param {Number} month Number corresponding to the month (1-12)
  * @param {Number} time Number corresponding to the time (0-23)
  */
-function getAllCatch(month,time){
-    //Look for fish
-    let fishFound = [];
-    for(let fish of fishData){
-        // Check if the fish is found in this month for either the north or south hemisphere
-        if(((fish.dateN.includes(month) || fish.dateN.includes(-1)) && webStorage.settings.hemisphere == "north") || // North
-           ((fish.dateS.includes(month) || fish.dateS.includes(-1)) && webStorage.settings.hemisphere == "south")){ // South
-            //check if correct time
-            if(fish.time.includes(time) || fish.time.includes(-1)){
-                //check if not donated
-                if(!webStorage.donated.fish.includes(fish.id) || !webStorage.settings.hideDonated){
-                    fishFound.push(fish);
-                }
-            }
+function filterCritterList(filter, renderFish){
+    
+    let critterData = renderFish ? fishData : bugData;
+    let crittersFound = [];
+    for(let critter of critterData){
+
+        if (filter.month != -1){
+            // Check if the critter is found in this month for either the north or south hemisphere
+            if(( webStorage.settings.hemisphere == "north" && !(critter.dateN.includes(-1) || critter.dateN.includes(month)) ) || // North
+               ( webStorage.settings.hemisphere == "south" && !(critter.dateS.includes(-1) || critter.dateS.includes(month)) )){ // South
+                continue;
+            }           
         }
 
+        // Check if critter is found at this time
+        if(filter.time != -1 && !(critter.time.includes(-1) || critter.time.includes(filter.time))){
+            continue;
+        }
+
+
+        //TODO: add this to filter and save filter to webstorage
+        // If hide donated setting on, check if donated, if yes then skip add
+        if(webStorage.settings.hideDonated && webStorage.donated.fish.includes(critter.id)){
+            continue;
+        }
+        
+        crittersFound.push(critter);
     }
     /////////////////////////////////////////////////
-    let bugsFound = [];
-    for(let bug of bugData){
-        // Check if the bug is found in this month for either the north or south hemisphere
-        if(((bug.dateN.includes(month) || bug.dateN.includes(-1)) && webStorage.settings.hemisphere == "north") || // North
-           ((bug.dateS.includes(month) || bug.dateS.includes(-1)) && webStorage.settings.hemisphere == "south")){ // South
-            //check if correct time
-            if(bug.time.includes(time) || bug.time.includes(-1)){
-                //check if not donated
-                if(!webStorage.donated.bugs.includes(bug.id) || !webStorage.settings.hideDonated){
-                    bugsFound.push(bug);
-                }
-            }
-        }
-    }
+    // let bugsFound = [];
+    // for(let bug of bugData){
+    //     // Check if the bug is found in this month for either the north or south hemisphere
+    //     if(((bug.dateN.includes(month) || bug.dateN.includes(-1)) && webStorage.settings.hemisphere == "north") || // North
+    //        ((bug.dateS.includes(month) || bug.dateS.includes(-1)) && webStorage.settings.hemisphere == "south")){ // South
+    //         //check if correct time
+    //         if(bug.time.includes(time) || bug.time.includes(-1)){
+    //             //check if not donated
+    //             if(!webStorage.donated.bugs.includes(bug.id) || !webStorage.settings.hideDonated){
+    //                 bugsFound.push(bug);
+    //             }
+    //         }
+    //     }
+    // }
 
     //TODO: Add sorting of critters
 
-    return {
-        fish: fishFound,
-        bugs: bugsFound
-    }
+    return crittersFound;
 }
 
 
-function addFishCard(fish){
-    let card = d3.select("#bugCards")
-                    .append("div").attr("class","mdc-card card")
+function addCritterCard(critter, renderFish){
+    let card = d3.select("#critterCards")
+                    .append("div").attr("class","mdc-card card").attr("id", `critter${critter.id}`)
                     .append("div").attr("class","mdc-card__primary-action");
 
     // Div for the critter image
     let cardImage = card.append("div").attr("class","mdc-card__media card-image")
-                    .style("background-image",`url('./images/fish/${fish.name}.png')`);
+                    .style("background-image",`url('./images/${renderFish?"fish":"bugs"}/${critter.name}.png')`);
 
     // Image Title
     cardImage.append("div").attr("class","card-title")
-        .append("div").attr("class","card-title-text").html(fish.name);
+        .append("div").attr("class","card-title-text").html(critter.name);
 
     // If Donated
-    if(webStorage.donated.fish.includes(fish.id)){
-        cardImage.append("div").append("img").attr("class","card-owlstamp").attr("src","./images/owlStampBrown.png");
+    if (renderFish){
+        if(webStorage.donated.fish.includes(critter.id)){
+            cardImage.append("div").append("img").attr("class","card-owlstamp").attr("src","./images/owlStampBrown.png");
+        }
+    }else{
+        if(webStorage.donated.bugs.includes(critter.id)){
+            cardImage.append("div").append("img").attr("class","card-owlstamp").attr("src","./images/owlStampBrown.png");
+        }
     }
 
     // Fish Size
-    let cardFishSize = cardImage.append("div").attr("class","card-fishsize");
-    cardFishSize.append("img").attr("src", `./images/fishSize/${fish.size}.png`);
-    cardFishSize.append("br");
-    cardFishSize.append("div").html(fish.size);
-
+    if(renderFish){
+        let cardFishSize = cardImage.append("div").attr("class","card-fishsize");
+        cardFishSize.append("img").attr("src", `./images/fishSize/${critter.size}.png`);
+        cardFishSize.append("br");
+        cardFishSize.append("div").html(critter.size);
+    }
 
     // Price
-    cardImage.append("div").attr("class","card-bells").html(`${fish.price}<img src="./images/bellBag.png">`);
+    cardImage.append("div").attr("class","card-bells").html(`${critter.price}<img src="./images/bellBag.png">`);
+
+    card.append("img").attr("src","./images/card-seperator.png");
 
     // Info section
     let cardInfo = card.append("div").attr("class","card-info");
@@ -99,12 +159,12 @@ function addFishCard(fish){
     let cardInfoLocation = cardInfo.append("div").attr("class","card-info-row");
 
     cardInfoLocation.append("div").attr("class","card-info-row-name").html("Location");
-    cardInfoLocation.append("div").attr("class","card-info-row-data").html(fish.found);
+    cardInfoLocation.append("div").attr("class","card-info-row-data").html(critter.found);
 
     // Time
     let cardInfoTime = cardInfo.append("div").attr("class","card-info-row");
     cardInfoTime.append("div").attr("class","card-info-row-name").html("Time");
-    cardInfoTime.append("div").attr("class","card-info-row-data").html(fish.timeString);
+    cardInfoTime.append("div").attr("class","card-info-row-data").html(critter.timeString);
 
 
     // Months
@@ -112,26 +172,20 @@ function addFishCard(fish){
 
     cardInfoMonths.append("div").attr("class","card-info-row-name")
         .attr("style", "line-height: 4;").html("Months");
-    //FIXME: Hardcoded to north hemisphere
-    //cardInfoMonths.append("div").attr("class","card-info-row-data").html(fish.dateStringN);
     
     let cardInfoMonthsData = cardInfoMonths.append("div").attr("style", "width: 160px;");
     
     let months = {1:"Jan",2:"Feb",3:"Mar",4:"Apr",5:"May",6:"Jun",7:"Jul",8:"Aug",9:"Sep",10:"Oct",11:"Nov",12:"Dec"};
-    let northHemisphereOption = true;
-    let fishMonthData = northHemisphereOption ? fish.dateN : fish.dateS;
+    let northHemisphereOption = webStorage.settings.hemisphere == "north";
+    let critterMonthData = northHemisphereOption ? critter.dateN : critter.dateS;
 
-    if (fish.id == "74")
-    {
-        console.log(fishMonthData);
-    }
     let monthDataRow = cardInfoMonthsData.append("div").attr("class", "card-info-row-monthdata");
     for (let i = 1; i <= 12; i++) {
         if (i == 5 || i == 9){
             monthDataRow = cardInfoMonthsData.append("div").attr("class", "card-info-row-monthdata");
         }
 
-        if (fishMonthData.includes(i) || fishMonthData[0] == -1){
+        if (critterMonthData.includes(i) || critterMonthData[0] == -1){
             monthDataRow.append("div")
                 .attr("class","card-info-month-checked")
                 .html(months[i]);
@@ -140,12 +194,8 @@ function addFishCard(fish){
                 .html(months[i]);
         }
     }
-    
 
-
-    
-
-    card.on("click",()=>{return markDonate("fish",fish.id)});
+    card.on("click",()=>{markDonate(renderFish?"fish":"bug",critter.id)});
 }
 
 function addBugCard(bug){
@@ -172,15 +222,26 @@ function addBugCard(bug){
 
 function markDonate(type,id){
     //console.log(`Type:${type}\nID:${id}`);
-
+    //TODO: add display none aka hide and show here instead of redrawing
     if(type == "fish"){
-        webStorage.donated.fish.push(id);
+        if (webStorage.donated.fish.includes(id)){
+            delete webStorage.donated.fish[webStorage.donated.fish.indexOf(id)];
+        }else{
+            webStorage.donated.fish.push(id);
+            //d3.select(`#critter${id}`).attr("class","hide");
+        }
     }else if(type == "bug"){
-        webStorage.donated.bugs.push(id);
+        if (webStorage.donated.bugs.includes(id)){
+            delete webStorage.donated.bugs[webStorage.donated.bugs.indexOf(id)];
+        }else{
+            webStorage.donated.bugs.push(id);
+            //d3.select(`#critter${id}`).attr("class","hide");
+        }
     }
 
     save("Added new donated critter");
-    checkDate();
+    renderCritterCards(filter,(type == "fish"));
+
 }
 
 function unhideDonated(){

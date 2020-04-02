@@ -12,6 +12,11 @@ body{
     /* background-color: #4fbaa0; */
     /* background-color: #f1e9be; */
     /* background-color: #e6d596; */
+
+    /* background-size: 20px 20px;
+    background-color: rgb(34, 74, 66);
+    background-image: radial-gradient(rgb(41, 81, 74) 20%, rgba(0, 0, 0, 0) 0px), radial-gradient(rgb(41, 81, 74) 20%, rgba(0, 0, 0, 0) 0px); */
+
     background-color: #80d5ac;
     background-image: url(../images/fish-background.png);
     background-size:  185px;
@@ -25,21 +30,78 @@ body{
     color: black;
 }
 
+.hide{
+    display: none;
+}
 
 .top-bar{
 	background-color: #30a774;
     padding: 10px;
     margin-bottom: 20px;
 }
+
+.fish-bug-switch{
+    height: 64px;
+    width: 128px;
+    background: #f6f6e1;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    background-image: url(../images/bug-icon-brown-unselected.png), url(../images/fish-icon-brown-unselected.png);
+    background-position: left center, right center;
+    background-size: 45px;
+    background-repeat: no-repeat;
+    background-position-x: 10px,74px;
+}
+
+
+.fish-bug-switch-selected{
+    background-position: center !important;
+    background-size: 45px !important;
+    width: 50%;
+    height: 100%;
+    background-color: #f7cc64 !important;
+    border-radius: 19px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+.fish-bug-switch .bug{
+    background: url(../images/bug-icon-brown.png) no-repeat;
+    margin-left: 0px;
+}
+.fish-bug-switch .fish{
+    background: url(../images/fish-icon-brown.png) no-repeat;
+    margin-left: 50%;
+}
+
+
 /* #region Card */
+@keyframes fadeIn {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+ 
+#critterCards{
+    opacity: 0%;
+    animation-name: fadeIn;
+    animation-delay: 1s; 
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
 
 .card{
     width: 300px;
-    background-color: darkblue;
     margin: 10px;
     float: left;
-    border-radius: 15px;
-    color: black;
+    /* border-radius: 15px; */
+
 }
 
 .card-image{
