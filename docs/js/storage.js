@@ -18,6 +18,7 @@ function load(){
     if(tempStorage == null){
         console.error("No WebStorage found, using default");
         tempStorage = {};
+        save("Saved default storage");
     }
 
     // Check donated critters
@@ -27,6 +28,7 @@ function load(){
             fish:[],
             bugs:[]
         }
+        save("Saved default donated Critters");
     }
 
     // Check settings
@@ -37,9 +39,23 @@ function load(){
             hideDonated: true,
             theme: "light",
             timeTraveller: false,
-            sorting: "default"
+            sorting: "default",
+            filter: {
+                fish:[],
+                bug:[]
+            }
         }
         save("No settings, saving default");
+    }
+
+    // Adds filters if no filters were found (future proofing)
+    if(tempStorage.settings.filter == undefined){
+        tempStorage.settings.filter = {
+            fish:[],
+            bug:[]
+        }
+
+        save("No filters were found");
     }
 
 
@@ -61,4 +77,11 @@ function load(){
            window.alert("Web Storage is not supported!");
        }
     }
+}
+
+function deleteSave(){
+    localStorage.clear();
+    webStorage = null;
+    console.error("rip");
+    location.reload();
 }

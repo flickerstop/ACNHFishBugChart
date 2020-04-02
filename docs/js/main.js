@@ -2,9 +2,7 @@
 let fishData = null;
 let bugData = null;
 let webStorage = null;
-let filter = {month: -1, time:-1};
-let toggleCritter = false;
-
+let shownCritterType = "fish";
 
 function init(){
     mdc.autoInit();
@@ -14,7 +12,14 @@ function init(){
     $("#fish-bug-switch").click(function() {
         $('.fish-bug-switch-selected').toggleClass('bug');
         $('.fish-bug-switch-selected').toggleClass('fish');
+        changeCritterType();
     });
+
+    // Get the current date and set it
+    d3.select("#month").property("value",new Date().getMonth());
+    // Get the current time and set it
+    d3.select("#time").property("value",new Date().getHours());
+    
 
     $.getJSON("./json/fish.json", function(fishResult){
         // load the data for all the fish
@@ -26,37 +31,32 @@ function init(){
             // Load the list of donated critters
             webStorage = load();
 
+            // Set the hemisphere button
+            d3.select("#hemisphereButton").html(webStorage.settings.hemisphere + " Hemisphere");
+            d3.select("#hideDonateButton").html(`Hide: ${webStorage.settings.hideDonated}`);
 
-            renderCritterCards(filter, true)
+            checkDate();
         });
     });
 }
 
-function renderCritterCards(filter, renderFish){
-    d3.select("#critterCards").html(null);
-
-    let filteredList = filterCritterList(filter, renderFish);
-
-    for(let critter of filteredList){
-        addCritterCard(critter, renderFish)
-    }
-}
-
+/**
+ * NOTE: this needs a better name, it basically redraws all the cards after checking the date.
+ * This is used basically everywhere to update the cards
+ */
 function checkDate(){
-    d3.select("#fishCards").html(null);
-    d3.select("#bugCards").html(null);
+    d3.select("#critterCards").html(null);
 
     let currentMonth = parseInt(d3.select("#month").node().value);
     let currentTime = parseInt(d3.select("#time").node().value);
 
-    let catchable = filterCritterList(currentMonth,currentTime,webStorage.settings.hemisphere);
+    let catchable = generateCritterList(currentMonth,currentTime, shownCritterType);
+    
+    catchable = filterCritterList(catchable,shownCritterType);
 
-    for(let fish of catchable.fish){
-        addFishCard(fish);
-    }
 
-    for(let bug of catchable.bugs){
-        addBugCard(bug);
+    for(let critter of catchable){
+        addCritterCard(critter,shownCritterType);
     }
 }
 
@@ -64,83 +64,103 @@ function checkDate(){
  * 
  * @param {Number} month Number corresponding to the month (1-12)
  * @param {Number} time Number corresponding to the time (0-23)
+ * @param {String} critterType Type of critter "bug" or "fish"
  */
-function filterCritterList(filter, renderFish){
-    
-    let critterData = renderFish ? fishData : bugData;
-    let crittersFound = [];
-    for(let critter of critterData){
+function generateCritterList(month, time, critterType){
+    // Which critter list to check
+    let critterList = critterType == "fish"? fishData:bugData;
+    let donateList = critterType=="fish"?webStorage.donated.fish:webStorage.donated.bugs;
 
-        if (filter.month != -1){
-            // Check if the critter is found in this month for either the north or south hemisphere
-            if(( webStorage.settings.hemisphere == "north" && !(critter.dateN.includes(-1) || critter.dateN.includes(month)) ) || // North
-               ( webStorage.settings.hemisphere == "south" && !(critter.dateS.includes(-1) || critter.dateS.includes(month)) )){ // South
-                continue;
-            }           
+    let returnList = [];
+
+
+    // Generate the critter list
+    for(let critter of critterList){
+        // if the critter is not on the donate list and we are not hiding donated
+        if(!donateList.includes(critter.id) || !webStorage.settings.hideDonated){
+            // If the critter is currently catchable this month
+            if(( webStorage.settings.hemisphere == "north" && (critter.dateN.includes(-1) || critter.dateN.includes(month)) ) || // North
+               ( webStorage.settings.hemisphere == "south" && (critter.dateS.includes(-1) || critter.dateS.includes(month)) )){  // South
+                // check if the time is correct
+                if(critter.time.includes(time) || critter.time.includes(-1)){
+                    returnList.push(critter);
+                }
+            }
         }
-
-        // Check if critter is found at this time
-        if(filter.time != -1 && !(critter.time.includes(-1) || critter.time.includes(filter.time))){
-            continue;
-        }
-
-
-        //TODO: add this to filter and save filter to webstorage
-        // If hide donated setting on, check if donated, if yes then skip add
-        if(webStorage.settings.hideDonated && webStorage.donated.fish.includes(critter.id)){
-            continue;
-        }
-        
-        crittersFound.push(critter);
     }
-    /////////////////////////////////////////////////
-    // let bugsFound = [];
-    // for(let bug of bugData){
-    //     // Check if the bug is found in this month for either the north or south hemisphere
-    //     if(((bug.dateN.includes(month) || bug.dateN.includes(-1)) && webStorage.settings.hemisphere == "north") || // North
-    //        ((bug.dateS.includes(month) || bug.dateS.includes(-1)) && webStorage.settings.hemisphere == "south")){ // South
-    //         //check if correct time
-    //         if(bug.time.includes(time) || bug.time.includes(-1)){
-    //             //check if not donated
-    //             if(!webStorage.donated.bugs.includes(bug.id) || !webStorage.settings.hideDonated){
-    //                 bugsFound.push(bug);
-    //             }
-    //         }
-    //     }
-    // }
-
-    //TODO: Add sorting of critters
-
-    return crittersFound;
+    return returnList;
 }
 
+function filterCritterList(critterList,critterType){
+    // What filter list should this use
+    let filterList = critterType == "fish"? webStorage.settings.filter.fish:webStorage.settings.filter.bug;
 
-function addCritterCard(critter, renderFish){
+    // List of ID's to remove
+    let toRemove = [];
+
+    // Go through all the passed critters
+    for(let critter of critterList){
+        // Go through all the filters
+        for(let filter of filterList){
+            // If the critter has this filter as an object value
+            if(Object.values(critter).includes(filter)){
+                // Save it to be removed
+                toRemove.push(critter.id);
+            }
+        }
+    }
+
+    // Go through all the critters to remove
+    for(let remove of toRemove){
+        critterList.splice(critterList.findIndex(x=>x.id == remove),1);
+    }
+
+    //Note: had to do this in 2 loops since splicing out of the currently
+    // iterated array causes skips in the foreach loop
+
+    return critterList;
+}
+
+/**
+ * Swaps between fish and bug critter types, then redraws the cards
+ */
+function changeCritterType(){
+    if(d3.select("#critterTypeSwitch").attr("class") == "fish-bug-switch-selected fish"){
+        shownCritterType = "fish"
+    }else{
+        shownCritterType = "bug"
+    }
+    checkDate();
+}
+
+/**
+ * 
+ * @param {Object} critter JSON object holding the critter info
+ * @param {String} critterType "fish" or "bug"
+ */
+function addCritterCard(critter, critterType){
+
+    let donateList = critterType=="fish"?webStorage.donated.fish:webStorage.donated.bugs;
+
     let card = d3.select("#critterCards")
                     .append("div").attr("class","mdc-card card").attr("id", `critter${critter.id}`)
                     .append("div").attr("class","mdc-card__primary-action");
 
     // Div for the critter image
     let cardImage = card.append("div").attr("class","mdc-card__media card-image")
-                    .style("background-image",`url('./images/${renderFish?"fish":"bugs"}/${critter.name}.png')`);
+                    .style("background-image",`url('./images/${critterType=="fish"?"fish":"bugs"}/${critter.name}.png')`);
 
     // Image Title
     cardImage.append("div").attr("class","card-title")
         .append("div").attr("class","card-title-text").html(critter.name);
 
     // If Donated
-    if (renderFish){
-        if(webStorage.donated.fish.includes(critter.id)){
-            cardImage.append("div").append("img").attr("class","card-owlstamp").attr("src","./images/owlStampBrown.png");
-        }
-    }else{
-        if(webStorage.donated.bugs.includes(critter.id)){
-            cardImage.append("div").append("img").attr("class","card-owlstamp").attr("src","./images/owlStampBrown.png");
-        }
+    if(donateList.includes(critter.id)){
+        cardImage.append("div").append("img").attr("class","card-owlstamp").attr("src","./images/owlStampBrown.png");
     }
 
     // Fish Size
-    if(renderFish){
+    if(critterType=="fish"){
         let cardFishSize = cardImage.append("div").attr("class","card-fishsize");
         cardFishSize.append("img").attr("src", `./images/fishSize/${critter.size}.png`);
         cardFishSize.append("br");
@@ -195,29 +215,7 @@ function addCritterCard(critter, renderFish){
         }
     }
 
-    card.on("click",()=>{markDonate(renderFish?"fish":"bug",critter.id)});
-}
-
-function addBugCard(bug){
-    let card = d3.select("#bugCards").append("div").attr("class","card");
-
-    card.append("div")
-        .attr("class","image")
-        .attr("style","background-image: url(\"./images/bugs/"+bug.name+".png\")")
-
-    card.append("div")
-        .attr("class","name")
-        .html(bug.name);
-
-    card.append("div")
-        .attr("class","location")
-        .html(bug.found);
-
-    card.append("div")
-        .attr("class","donateButton")
-        .html("click")
-        .on("click",()=>{return markDonate("bug",bug.id)});
-
+    card.on("click",()=>{markDonate(critterType,critter.id)});
 }
 
 function markDonate(type,id){
@@ -240,14 +238,7 @@ function markDonate(type,id){
     }
 
     save("Added new donated critter");
-    renderCritterCards(filter,(type == "fish"));
-
-}
-
-function unhideDonated(){
-    webStorage.settings.hideDonated = !webStorage.settings.hideDonated;
-    d3.select("#hideDonateButton").html(`Hide: ${webStorage.settings.hideDonated}`);
-
-    save("Changed hide donated");
     checkDate();
+
 }
+

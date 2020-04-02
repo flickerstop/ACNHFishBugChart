@@ -9,6 +9,7 @@
         <!-- CSS -->
         <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
         <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="./css/sideBar.css">
         
         <!-- Javascript -->
         <script src="./js/externalLibs/jquery-3.4.1.min.js"></script>
@@ -16,6 +17,7 @@
         <script src="./js/externalLibs/d3.min.js"></script>
 
         <script src="./js/main.js"></script>
+        <script src="./js/sideBar.js"></script>
         <script src="./js/storage.js"></script>
         
     </head>
@@ -25,8 +27,9 @@
         **********************************************-->
         <div id="topBar" class="top-bar mdc-elevation--z1">
             <div id="fish-bug-switch" class="fish-bug-switch">
-                <div class="fish-bug-switch-selected"></div>
+                <div id="critterTypeSwitch" class="fish-bug-switch-selected"></div>
             </div>
+            <div id="openSettingsButton" onclick="openSidebar()"></div>
         </div>
 
         <!--*********************************************
@@ -53,14 +56,41 @@
                 Time (24 hour):
                 <input id="time" type="number" min="0" max="23" value="0" onchange="checkDate()">
 
-                <div id="hideDonateButton" onclick="unhideDonated()">Hide: true</div>
+                
 
-                <div id="hemisphereButton" onclick="swapHemisphere()">Is North: true</div>
+                
             </div>
 
             <div id="critterCards">
                 Pick month/time
             </div>
+        </div>
+
+        <!--*********************************************
+        *                 Side bar
+        **********************************************-->
+        
+        <div id="settingsSideBar">
+            [x] <-- I'll make work <br>
+            plz don't kill me<br>
+            this looks bad I know...<br>
+            It's just temp looks<br>
+            <br>
+            Close with refresh<br>
+            OR<br>
+            closeSidebar()<br>
+
+            <div id="hideDonateButton" onclick="unhideDonated()">Hide: true</div>
+            <div id="hemisphereButton" onclick="swapHemisphere()"></div>
+
+            Filters to hide:<br>
+            <div class="jokeTempToggleText">River:</div><div class="jokeTempToggleOff"></div>
+            <div class="jokeTempToggleText">Pond:</div><div class="jokeTempToggleOff"></div>
+            <div class="jokeTempToggleText">Girls:</div><div class="jokeTempToggleOn"></div>
+            <div class="jokeTempToggleText">Sea:</div><div class="jokeTempToggleOff"></div>
+
+            Note:<br>
+            Filtering works, I just need to add toggles for it
         </div>
 
         <!--*********************************************
