@@ -68,19 +68,21 @@ function searchCritter(searchString, critterType){
 }
 
 /**
- * Toggles the current settings for showing Donated critters
+ * Sets the current settings value for showing Donated critters
+ * @param {boolean} value Value of the Show Donated setting
  */
-function toggleShowDonated(){
-    webStorage.settings.showDonated = !webStorage.settings.showDonated;
-    save("Toggled showDonated");
+function setShowDonated(value){
+    webStorage.settings.showDonated = value;
+    save("Set showDonated: " + value);
     checkDate();
 }
 
 /**
- * Toggles the current settings for showing nonDonated critters
+ * Sets the current settings value for showing Non Donated critters
+ * @param {boolean} value Value of the Show Donated setting
  */
-function toggleShowNonDonated(){
-    webStorage.settings.showNonDonated = !webStorage.settings.showNonDonated;
-    save("Toggled showNonDonated");
+function setShowNonDonated(value){
+    webStorage.settings.showNonDonated = value;
+    save("Set showNonDonated: " + value);
     checkDate();
 }

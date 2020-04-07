@@ -19,8 +19,6 @@ function init(){
         changeCritterType();
     });
 
-  
-    
 
     $.getJSON("./json/fish.json", function(fishResult){
         // load the data for all the fish
@@ -305,29 +303,30 @@ function markDonate(type,id){
 
 function initMDC(){
     mdc.autoInit();
-    showDonatedChipSet = new mdc.chips.MDCChipSet(document.querySelector('.mdc-chip-set'));
     
     //const textField = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
     //const select = new mdc.select.MDCSelect(document.querySelector('.mdc-select'));
     const textFields = [].map.call(document.querySelectorAll('.mdc-text-field'), function(el) {
         return new mdc.textField.MDCTextField(el);
     });
-
+    
     monthSelect = new mdc.select.MDCSelect(document.querySelector('#monthSelect'));
     monthSelect.value = (new Date().getMonth()+1).toString();
     monthSelect.listen('MDCSelect:change', () => {
         checkDate();
-      });
+    });
     d3.select("#timeInput").property("value",new Date().getHours());
-    // for (let i = 0; i < selects.length; i++) {
-    //     selects[i].listen('MDCSelect:change', () => {
-    //         checkDate();
-    //       });
-        
-    // }
-    // for (const mdcSelect in selects) {
-    //     mdcSelect.listen('MDCSelect:change', () => {
-    //         checkDate();
-    //       });
-    // }
+    
+    showDonatedChipSet = new mdc.chips.MDCChipSet(document.querySelector('.mdc-chip-set'));
+    
+    showDonatedChipSet.listen("MDCChip:selection", function(event){
+        if (event.chipId == "showDonated"){
+            setShowDonated(event.selected);
+
+        }else if(event.chipId == "showNotDonated"){
+            setShowNonDonated(event.selected)
+        }
+
+    });
+
 }
