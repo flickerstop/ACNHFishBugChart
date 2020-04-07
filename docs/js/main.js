@@ -4,9 +4,37 @@ let bugData = null;
 let webStorage = null;
 let shownCritterType = "fish";
 
+let monthSelect = null;
+
+
 function init(){
     mdc.autoInit();
-    //mdc.switchControl.MDCSwitch.attachTo(document.querySelector('.mdc-switch'));
+    const textField = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
+    //const select = new mdc.select.MDCSelect(document.querySelector('.mdc-select'));
+    // const selects = [].map.call(document.querySelectorAll('.mdc-select'), function(el) {
+    //     return new mdc.select.MDCSelect(el);
+    // });
+
+    // $("#critterSearch").on("change", function(e){
+    //     console.log(e);
+    // });
+    monthSelect = new mdc.select.MDCSelect(document.querySelector('#monthSelect'));
+    monthSelect.value = (new Date().getMonth()+1).toString();
+    monthSelect.listen('MDCSelect:change', () => {
+        checkDate();
+      });
+    d3.select("#timeInput").property("value",new Date().getHours());
+    // for (let i = 0; i < selects.length; i++) {
+    //     selects[i].listen('MDCSelect:change', () => {
+    //         checkDate();
+    //       });
+        
+    // }
+    // for (const mdcSelect in selects) {
+    //     mdcSelect.listen('MDCSelect:change', () => {
+    //         checkDate();
+    //       });
+    // }
 
     $('.fish-bug-switch-selected').toggleClass('fish');
     $("#fish-bug-switch").click(function() {
@@ -18,7 +46,7 @@ function init(){
     // Get the current date and set it
     d3.select("#month").property("value",new Date().getMonth());
     // Get the current time and set it
-    d3.select("#time").property("value",new Date().getHours());
+    
     
 
     $.getJSON("./json/fish.json", function(fishResult){
@@ -38,6 +66,23 @@ function init(){
             checkDate();
         });
     });
+
+    // For the time input to make sure they can only type in 2 digits
+    $('.max-length').unbind('keyup change input paste').bind('keyup change input paste',function(e){
+        var $this = $(this);
+        var val = $this.val();
+        var valLength = val.length;
+        var maxCount = $this.attr('maxlength');
+        if(valLength>maxCount){
+            $this.val($this.val().substring(0,maxCount));
+        }
+    }); 
+}
+
+function searchCritter(value){
+    //addCritterFilter(value,shownCritterType)
+    console.log(value);
+    //checkDate();
 }
 
 /**
@@ -47,17 +92,24 @@ function init(){
 function checkDate(){
     d3.select("#critterCards").html(null);
 
-    let currentMonth = parseInt(d3.select("#month").node().value);
-    let currentTime = parseInt(d3.select("#time").node().value);
+    let currentMonth = parseInt(monthSelect.value);
+    let currentTime = parseInt(d3.select("#timeInput").node().value);
 
     let catchable = generateCritterList(currentMonth,currentTime, shownCritterType);
     
     catchable = filterCritterList(catchable,shownCritterType);
 
 
+
     for(let critter of catchable){
         addCritterCard(critter,shownCritterType);
     }
+
+    // re init ripple effect on all cards, currently not working?
+    const selector = '.mdc-button, .mdc-icon-button, .mdc-card__primary-action .mdc-line-ripple';
+    const ripples = [].map.call(document.querySelectorAll(selector), function(el) {
+        return new mdc.ripple.MDCRipple(el);
+    });
 }
 
 /**
@@ -143,7 +195,7 @@ function addCritterCard(critter, critterType){
     let donateList = critterType=="fish"?webStorage.donated.fish:webStorage.donated.bugs;
 
     let card = d3.select("#critterCards")
-                    .append("div").attr("class","mdc-card card").attr("id", `critter${critter.id}`)
+                    .append("div").attr("class","mdc-card mdc-elevation--z3 card").attr("id", `critter${critter.id}`)
                     .append("div").attr("class","mdc-card__primary-action");
 
     // Div for the critter image
@@ -156,7 +208,17 @@ function addCritterCard(critter, critterType){
 
     // If Donated
     if(donateList.includes(critter.id)){
-        cardImage.append("div").append("img").attr("class","card-owlstamp").attr("src","./images/owlStampBrown.png");
+        card.append("div").attr("class","card-owlstamp")
+            .append("div").attr("class","card-owlstamp-image")
+            .attr("id",`critter${critter.id}-owlstamp`);
+
+    }else{
+        card.append("div").attr("class","card-owlstamp")
+            .append("div").attr("class","card-owlstamp-image zoom")
+            .attr("id",`critter${critter.id}-owlstamp`)
+            .style("display", "none");
+
+        setTimeout(()=>{d3.select(`#critter${critter.id}-owlstamp`).style("display","");}, 600)
     }
 
     // Fish Size
@@ -220,25 +282,41 @@ function addCritterCard(critter, critterType){
 
 function markDonate(type,id){
     //console.log(`Type:${type}\nID:${id}`);
-    //TODO: add display none aka hide and show here instead of redrawing
+
+    // Used in the statements below to state if the critter was donated or undonated
+    let critterDonated = true;
     if(type == "fish"){
         if (webStorage.donated.fish.includes(id)){
             delete webStorage.donated.fish[webStorage.donated.fish.indexOf(id)];
+            critterDonated = false;
         }else{
             webStorage.donated.fish.push(id);
-            //d3.select(`#critter${id}`).attr("class","hide");
+            critterDonated = true;
         }
     }else if(type == "bug"){
         if (webStorage.donated.bugs.includes(id)){
             delete webStorage.donated.bugs[webStorage.donated.bugs.indexOf(id)];
+            critterDonated = false;
         }else{
             webStorage.donated.bugs.push(id);
-            //d3.select(`#critter${id}`).attr("class","hide");
+            critterDonated = true;
         }
     }
 
     save("Added new donated critter");
-    checkDate();
 
+    // If hide donated critter setting enabled then hide card, else add the owl stamp
+    if (webStorage.settings.hideDonated) { 
+        // Start the fade out effect
+        d3.select(`#critter${id}`).style("width",0).style("height",330).classed("fadeout", true);
+        // Hide the element after the fade animation, make sure to match timeout delay with 
+        // .card css class transition property (ex. transition: all 0.3s linear)
+        setTimeout(()=>{d3.select(`#critter${id}`).style("display","none");}, 300)
+    }else{
+        // Start owl stamp zoom effect
+        d3.select(`#critter${id}-owlstamp`).classed("zoom", !critterDonated);
+    }
+    
+    //checkDate();
 }
 

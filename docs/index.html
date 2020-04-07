@@ -7,13 +7,14 @@
         <link rel="shortcut icon" type="image/png" href="./favicon.ico"/>
         
         <!-- CSS -->
-        <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+        <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="./css/main.css">
         <link rel="stylesheet" href="./css/sideBar.css">
         
         <!-- Javascript -->
         <script src="./js/externalLibs/jquery-3.4.1.min.js"></script>
-        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+        <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.js"></script>
         <script src="./js/externalLibs/d3.min.js"></script>
 
         <script src="./js/main.js"></script>
@@ -25,52 +26,151 @@
         <!--*********************************************
         *                 Top Bar
         **********************************************-->
-        <div id="topBar" class="top-bar mdc-elevation--z1">
+        <div id="topBar" class="top-bar mdc-elevation--z7">
             <div id="fish-bug-switch" class="fish-bug-switch">
                 <div id="critterTypeSwitch" class="fish-bug-switch-selected"></div>
             </div>
-            <div id="openSettingsButton" onclick="openSidebar()"></div>
+            <!-- <div id="openSettingsButton" onclick="openSidebar()"></div> -->
         </div>
 
-        <!--*********************************************
-        *                 Main Body
-        **********************************************-->
-        
-        <div id="body">
-            <div id="dateSelector">
-                Month:
-                <select id="month" onchange="checkDate()">
-                    <option selected value='1'>Janaury</option>
-                    <option value='2'>February</option>
-                    <option value='3'>March</option>
-                    <option value='4'>April</option>
-                    <option value='5'>May</option>
-                    <option value='6'>June</option>
-                    <option value='7'>July</option>
-                    <option value='8'>August</option>
-                    <option value='9'>September</option>
-                    <option value='10'>October</option>
-                    <option value='11'>November</option>
-                    <option value='12'>December</option>
-                </select>
-                Time (24 hour):
-                <input id="time" type="number" min="0" max="23" value="0" onchange="checkDate()">
+        <div class="page-content">
+            <!--*********************************************
+            *                 Side bar
+            **********************************************-->
 
-                
+            <aside class="mdc-drawer main-drawer">
+                <div class="mdc-drawer__content" style="padding: 10px 15px;">
+                <nav class="mdc-list">
+                    <div class="drawer-item">
+                        <label class="mdc-text-field mdc-text-field--with-leading-icon">
+                            <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0" role="button">search</i>
+                            <input id="critterSearch" onkeyup="searchCritter(this.value)" class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                            <span class="mdc-floating-label" id="my-label-id">Search</span>
+                            <div class="mdc-line-ripple"></div>
+                        </label>
+                    </div>
+                    <div class="drawer-item">
+                        <div id="monthSelect" class="mdc-select mdc-select--with-leading-icon">
+                            <div class="mdc-select__anchor select-width-class">
+                            <i class="material-icons mdc-select__icon" tabindex="0" role="button">event</i>
+                              <i class="mdc-select__dropdown-icon"></i>
+                              <div class="mdc-select__selected-text"></div>
+                              <span class="mdc-floating-label">Month</span>
+                              <div class="mdc-line-ripple"></div>
+                            </div>
+                          
+                            <div class="mdc-select__menu mdc-menu mdc-menu-surface select-width-class">
+                              <ul class="mdc-list">
+                                <!-- <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li> -->
+                                <li class="mdc-list-item" data-value='1'>January</li>
+                                <li class="mdc-list-item" data-value='2'>February</li>
+                                <li class="mdc-list-item" data-value='3'>March</li>
+                                <li class="mdc-list-item" data-value='4'>April</li>
+                                <li class="mdc-list-item" data-value='5'>May</li>
+                                <li class="mdc-list-item" data-value='6'>June</li>
+                                <li class="mdc-list-item" data-value='7'>July</li>
+                                <li class="mdc-list-item" data-value='8'>August</li>
+                                <li class="mdc-list-item" data-value='9'>September</li>
+                                <li class="mdc-list-item" data-value='10'>October</li>
+                                <li class="mdc-list-item" data-value='11'>November</li>
+                                <li class="mdc-list-item" data-value='12'>December</li>
+                              </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="drawer-item">
+                        <label class="mdc-text-field mdc-text-field--with-leading-icon select-width-class" >
+                            <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0" role="button">schedule</i>
+                            <input id="timeInput" onkeyup="checkDate()" onchange="checkDate()" class="mdc-text-field__input max-length"
+                                type="number" min="0" max="23" maxlength="2" aria-labelledby="my-label-id"
+                                aria-controls="username-helper-text" aria-describedby="username-helper-text">
+                            <span class="mdc-floating-label mdc-floating-label--float-above" id="my-label-id">Time (24 hour)</span>
+                            <div class="mdc-line-ripple"></div>
+                        </label>
+                        <div class="mdc-text-field-helper-line">
+                            <div id="username-helper-text" class="mdc-text-field-helper-text" aria-hidden="true">
+                              24 Hour
+                            </div>
+                          </div>
+                    </div>
+                    <div class="drawer-item">
+                        <div class="mdc-chip-set mdc-chip-set--filter" role="grid">
+                            <div class="mdc-chip mdc-chip--selected" role="row">
+                              <div class="mdc-chip__ripple"></div>
+                              <!-- <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i> -->
+                              <span class="mdc-chip__checkmark" >
+                                <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                                  <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                        d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                </svg>
+                              </span>
+                              <span role="gridcell">
+                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                  <span class="mdc-chip__text">Donated</span>
+                                </span>
+                              </span>
+                            </div>
+                            <div class="mdc-chip mdc-chip--selected" role="row">
+                                <div class="mdc-chip__ripple"></div>
+                                <!-- <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i> -->
+                                <span class="mdc-chip__checkmark" >
+                                  <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                                    <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                          d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                                  </svg>
+                                </span>
+                                <span role="gridcell">
+                                  <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                                    <span class="mdc-chip__text">Not Donated</span>
+                                  </span>
+                                </span>
+                              </div>
+                          </div>
+                    </div>
+                </nav>
+                </div>
+            </aside>
 
-                
-            </div>
+            <!--*********************************************
+            *                 Main Section
+            **********************************************-->
+            
+            <div class="main-section">
+                <!-- <div id="dateSelector">
+                    Month:
+                    <select id="month" onchange="checkDate()">
+                        <option selected value='1'>Janaury</option>
+                        <option value='2'>February</option>
+                        <option value='3'>March</option>
+                        <option value='4'>April</option>
+                        <option value='5'>May</option>
+                        <option value='6'>June</option>
+                        <option value='7'>July</option>
+                        <option value='8'>August</option>
+                        <option value='9'>September</option>
+                        <option value='10'>October</option>
+                        <option value='11'>November</option>
+                        <option value='12'>December</option>
+                    </select>
+                    Time (24 hour):
+                    <input id="time" type="number" min="0" max="23" value="0" onchange="checkDate()">
 
-            <div id="critterCards">
-                Pick month/time
+                    
+
+                    
+                </div> -->
+
+                <div id="critterCards">
+                    
+                    Pick month/time
+                </div>
             </div>
         </div>
-
         <!--*********************************************
         *                 Side bar
         **********************************************-->
         
-        <div id="settingsSideBar">
+        <!-- <div id="settingsSideBar">
             [x] <-- I'll make work <br>
             plz don't kill me<br>
             this looks bad I know...<br>
@@ -91,7 +191,7 @@
 
             Note:<br>
             Filtering works, I just need to add toggles for it
-        </div>
+        </div> -->
 
         <!--*********************************************
         *                 Footer

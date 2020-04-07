@@ -1,12 +1,17 @@
+:root {
+    --mdc-theme-primary: #c19251;
+    --mdc-theme-secondary: #f7cc64;
+    --mdc-theme-background: #f4f6e1;
+}
 @font-face {
     font-family: "Humming";
     src: url(./fonts/humming.otf) format("opentype");
 }
 
 *{
-    font-family: Humming;
+    color: #504d44;
+    font-family: Humming !important;
     line-height: 1.5;
-    overflow-x: hidden;
 }
 
 body{
@@ -24,21 +29,80 @@ body{
     margin: 0px;
 }
 
-#body{
-    padding: 0px 10px;
-}
-#dateSelector{
-    color: black;
-}
-
-.hide{
-    display: none;
+.page-content{
+    display: flex;
+    width: 100%;
+    padding-top: 90px;
+    box-sizing: border-box;
+    flex: 1;
 }
 
+.main-section{
+    margin-left: 250px;
+    padding: 20px 25px;
+}
+.material-icons{
+    font-family: 'Material Icons' !important;
+}
+
+/* #region Side Bar */
+
+.main-drawer{
+    position: fixed;
+    height: 100vh;
+    width: 250px;
+    z-index: 6;
+    background: #f4f6e1;
+}
+
+.drawer-item{
+    margin-top: 10px;
+}
+
+.select-width-class{
+    width: 100%;
+}
+
+#timeInput{
+    text-align: center;
+}
+
+.mdc-select--focused .mdc-select__dropdown-icon {
+    /* Search and replace c19251 in the line below to change color */
+    background: url("data:image/svg+xml,%3Csvg%20width%3D%2210px%22%20height%3D%225px%22%20viewBox%3D%227%2010%2010%205%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%0A%20%20%20%20%3Cpolygon%20id%3D%22Shape%22%20stroke%3D%22none%22%20fill%3D%22%23c19251%22%20fill-rule%3D%22evenodd%22%20opacity%3D%221%22%20points%3D%227%2010%2012%2015%2017%2010%22%3E%3C%2Fpolygon%3E%0A%3C%2Fsvg%3E") no-repeat center
+}
+.mdc-drawer .mdc-list-item,
+.mdc-select__selected-text,
+.mdc-floating-label,
+.mdc-text-field__input{
+    color: #504d44 !important;
+}
+.mdc-floating-label--float-above{
+    color: var(--mdc-theme-primary) !important;
+}
+.mdc-text-field__input,
+.mdc-select__selected-text{
+    background: var(--mdc-theme-background);
+}
+
+.mdc-chip {
+    padding: 0px 7px;
+}
+.mdc-chip__text{
+    font-size: 11px;
+}
+/* #endregion */
+
+
+/* #region Top Bar */
 .top-bar{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    padding: 10px 25px;
 	background-color: #30a774;
-    padding: 10px;
-    margin-bottom: 20px;
+    z-index: 10;
 }
 
 .fish-bug-switch{
@@ -53,9 +117,8 @@ body{
     background-size: 45px;
     background-repeat: no-repeat;
     background-position-x: 10px,74px;
-    float: left;
+    /* float: left; */
 }
-
 
 .fish-bug-switch-selected{
     background-position: center !important;
@@ -64,11 +127,9 @@ body{
     height: 100%;
     background-color: #f7cc64 !important;
     border-radius: 19px;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    -ms-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.4s cubic-bezier(0.46, 0.13, 0.29, 1.32);
+    -moz-transition: all 0.4s cubic-bezier(0.46, 0.13, 0.29, 1.32);
+    transition: all 0.4s cubic-bezier(0.46, 0.13, 0.29, 1.32);
 }
 .fish-bug-switch .bug{
     background: url(../images/bug-icon-brown.png) no-repeat;
@@ -78,7 +139,7 @@ body{
     background: url(../images/fish-icon-brown.png) no-repeat;
     margin-left: 50%;
 }
-
+/* #endregion */
 
 /* #region Card */
 @keyframes fadeIn {
@@ -102,13 +163,20 @@ body{
     width: 300px;
     margin: 10px;
     float: left;
-    /* border-radius: 15px; */
 
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    /* border-radius: 15px; */
+}
+.card.fadeout{
+    opacity: 0;
 }
 
 .card-image{
     width: 300px;
     height: 170px;
+    overflow: initial;
 }
 
 .card-title{
@@ -146,16 +214,31 @@ body{
     transform: rotate(-90deg);
 }
 .card-owlstamp{
-    width: 250px;
     position: absolute;
-    bottom: -58px;
-    left: 18px;
-    margin: 6px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.card-owlstamp-image{
+    width: 100%;
+    height: 100%;
     opacity: 0.45;
     transform: rotate(14deg);
-    pointer-events: none;
-}
 
+    background: url(../images/owlStampBrown.png) no-repeat;
+    background-size: 250px;
+    background-position: center;
+    
+    -webkit-transition: all 0.5s cubic-bezier(0.55, 0.09, 0.68, 0.53);;
+    -moz-transition: all 0.5s cubic-bezier(0.55, 0.09, 0.68, 0.53);;
+    transition: all 0.5s cubic-bezier(0.55, 0.09, 0.68, 0.53);;
+}
+.card-owlstamp-image.zoom {
+    opacity: 0 !important;
+    background-size: 500px !important;
+
+  }
 .card-bells{
     position: absolute;
     right: 0;
