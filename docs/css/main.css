@@ -58,13 +58,39 @@ body{
 .drawer-item{
     margin-top: 10px;
 }
-
+.drawer-item.bottom-border{
+    border-bottom: solid 1px #0000006b;
+}
 .select-width-class{
     width: 100%;
 }
 
+.drawer-item-label{
+    transform: translateY(-106%) scale(0.75);
+    position: absolute;
+    left: 30px;
+    color: var(--mdc-theme-primary);
+}
+
 #timeInput{
-    text-align: center;
+    text-align: right;
+    /* width: 55%; */
+}
+#timeinputzeros{
+    height: 0;
+    position: absolute;
+    top: 23px;
+    left: 91px;
+}
+/* Chrome, Safari, Edge, Opera */
+#timeInput::-webkit-outer-spin-button,
+#timeInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 56px;
+}
+/* Firefox */
+#timeInput[type=number] {
+  -moz-appearance: textfield;
 }
 
 .mdc-select--focused .mdc-select__dropdown-icon {
@@ -81,7 +107,8 @@ body{
     color: var(--mdc-theme-primary) !important;
 }
 .mdc-text-field__input,
-.mdc-select__selected-text{
+.mdc-select__selected-text
+,.mdc-text-field:not(.mdc-text-field--disabled){
     background: var(--mdc-theme-background);
 }
 

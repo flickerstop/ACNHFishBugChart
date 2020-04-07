@@ -5,7 +5,9 @@ let webStorage = null;
 let shownCritterType = "fish";
 
 let monthSelect = null;
+let hemisphereSwitch = null;
 let showDonatedChipSet = null;
+
 
 
 
@@ -115,7 +117,7 @@ function generateCritterList(month, time, critterType){
             if(( webStorage.settings.hemisphere == "north" && (critter.dateN.includes(-1) || critter.dateN.includes(month)) ) || // North
                ( webStorage.settings.hemisphere == "south" && (critter.dateS.includes(-1) || critter.dateS.includes(month)) )){  // South
                 // check if the time is correct
-                if(critter.time.includes(time) || critter.time.includes(-1)){
+                if(isNaN(time) || critter.time.includes(time) || critter.time.includes(-1)){
                     returnList.push(critter);
                 }
             }
@@ -317,7 +319,9 @@ function initMDC(){
     });
     d3.select("#timeInput").property("value",new Date().getHours());
     
-    showDonatedChipSet = new mdc.chips.MDCChipSet(document.querySelector('.mdc-chip-set'));
+    hemisphereSwitch = new mdc.switchControl.MDCSwitch(document.querySelector('#hemisphereSwitch'));
+    hemisphereSwitch.checked = webStorage.settings.hemisphere == "south";
+    showDonatedChipSet = new mdc.chips.MDCChipSet(document.querySelector('#donateChipSet'));
    
     showDonatedChipSet.chips[0].selected = webStorage.settings.showDonated;
     showDonatedChipSet.chips[1].selected = webStorage.settings.showNonDonated;

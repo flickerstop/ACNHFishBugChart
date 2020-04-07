@@ -2,13 +2,13 @@
  * Swaps the settings for hemisphere (not used)
  */
 function swapHemisphere(){
-    if(webStorage.settings.hemisphere == "north"){
+    if (hemisphereSwitch.checked) {
         webStorage.settings.hemisphere = "south";
     }else{
         webStorage.settings.hemisphere = "north";
     }
     save("Hemisphere Changed");
-    d3.select("#hemisphereButton").html(webStorage.settings.hemisphere + " Hemisphere");
+    // d3.select("#hemisphereButton").html(webStorage.settings.hemisphere + " Hemisphere");
     checkDate();
 }
 
@@ -52,6 +52,10 @@ function removeCritterFilter(filter,critterType){
  * @param {String} critterType Type of critter "bug" or "fish"
  */
 function searchCritter(searchString, critterType){
+    if (searchString == ""){
+        checkDate();
+        return;
+    }
     let searchList = critterType == "fish"? fishData:bugData;
 
     let regex = new RegExp(`.*${searchString.toLowerCase()}.*`);
