@@ -1,19 +1,6 @@
-function openSidebar(){
-    d3.select("#settingsSideBar").transition(200).style("right","0px");
-}
-
-function closeSidebar(){
-    d3.select("#settingsSideBar").transition(200).style("right","-250px");
-}
-
-function unhideDonated(){
-    webStorage.settings.hideDonated = !webStorage.settings.hideDonated;
-    d3.select("#hideDonateButton").html(`Hide: ${webStorage.settings.hideDonated}`);
-
-    save("Changed hide donated");
-    checkDate();
-}
-
+/**
+ * Swaps the settings for hemisphere (not used)
+ */
 function swapHemisphere(){
     if(webStorage.settings.hemisphere == "north"){
         webStorage.settings.hemisphere = "south";
@@ -57,4 +44,43 @@ function removeCritterFilter(filter,critterType){
     }else{
         console.error("Trying to remove filter which does not exist!");
     }
+}
+
+/**
+ * Searches the list of critters for matching names
+ * @param {String} searchString Name of the critter
+ * @param {String} critterType Type of critter "bug" or "fish"
+ */
+function searchCritter(searchString, critterType){
+    let searchList = critterType == "fish"? fishData:bugData;
+
+    let regex = new RegExp(`.*${searchString.toLowerCase()}.*`);
+
+    let validCritters = [];
+
+    for(let critter of searchList){
+        if(regex.exec(critter.name.toLowerCase())){
+            validCritters.push(critter);
+        }
+    }
+
+    updateCards(validCritters);
+}
+
+/**
+ * Toggles the current settings for showing Donated critters
+ */
+function toggleShowDonated(){
+    webStorage.settings.showDonated = !webStorage.settings.showDonated;
+    save("Toggled showDonated");
+    checkDate();
+}
+
+/**
+ * Toggles the current settings for showing nonDonated critters
+ */
+function toggleShowNonDonated(){
+    webStorage.settings.showNonDonated = !webStorage.settings.showNonDonated;
+    save("Toggled showNonDonated");
+    checkDate();
 }
