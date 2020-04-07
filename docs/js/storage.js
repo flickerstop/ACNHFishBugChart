@@ -36,7 +36,6 @@ function load(){
         console.error("Settings data not found, using default");
         tempStorage.settings = {
             hemisphere: "north",
-            hideDonated: true,
             theme: "light",
             timeTraveller: false,
             sorting: "default",
@@ -56,6 +55,16 @@ function load(){
         }
 
         save("No filters were found");
+    }
+
+    // Check if "showDonated" and "showNonDonated is there"
+    if(tempStorage.settings.showDonated == undefined){
+        delete tempStorage.settings.hideDonated;
+        tempStorage.settings.showDonated = true;
+        tempStorage.settings.showNonDonated = true;
+
+        console.error("Changing donated settings from old to new...");
+        save("Changed donated settings");
     }
 
 

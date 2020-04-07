@@ -33,8 +33,8 @@ function init(){
             webStorage = load();
 
             // Set the hemisphere button
-            d3.select("#hemisphereButton").html(webStorage.settings.hemisphere + " Hemisphere");
-            d3.select("#hideDonateButton").html(`Hide: ${webStorage.settings.hideDonated}`);
+            // d3.select("#hemisphereButton").html(webStorage.settings.hemisphere + " Hemisphere");
+            // d3.select("#hideDonateButton").html(`Hide: ${webStorage.settings.hideDonated}`);
 
             checkDate();
         });
@@ -50,12 +50,6 @@ function init(){
             $this.val($this.val().substring(0,maxCount));
         }
     }); 
-}
-
-function searchCritter(value){
-    //addCritterFilter(value,shownCritterType)
-    console.log(value);
-    //checkDate();
 }
 
 /**
@@ -83,6 +77,22 @@ function checkDate(){
     const ripples = [].map.call(document.querySelectorAll(selector), function(el) {
         return new mdc.ripple.MDCRipple(el);
     });
+
+    // Clear the search bar
+    //FIXME doesn't reset the search bar correctly
+    d3.select("#critterSearch").property("value","");
+}
+
+/**
+ * Updates the critter cards with what's passed to it
+ * @param {Array} newCards Array of critters to show
+ */
+function updateCards(newCards){
+    d3.select("#critterCards").html(null);
+
+    for(let critter of newCards){
+        addCritterCard(critter,shownCritterType);
+    }
 }
 
 /**
@@ -101,8 +111,8 @@ function generateCritterList(month, time, critterType){
 
     // Generate the critter list
     for(let critter of critterList){
-        // if the critter is not on the donate list and we are not hiding donated
-        if(!donateList.includes(critter.id) || !webStorage.settings.hideDonated){
+        // if the critter is donated and we're showing donated critters OR the critter isn't in the donate list and we're showing nondonated
+        if((donateList.includes(critter.id) && webStorage.settings.showDonated) || (!donateList.includes(critter.id) && webStorage.settings.showNonDonated)){
             // If the critter is currently catchable this month
             if(( webStorage.settings.hemisphere == "north" && (critter.dateN.includes(-1) || critter.dateN.includes(month)) ) || // North
                ( webStorage.settings.hemisphere == "south" && (critter.dateS.includes(-1) || critter.dateS.includes(month)) )){  // South
@@ -279,7 +289,7 @@ function markDonate(type,id){
     save("Added new donated critter");
 
     // If hide donated critter setting enabled then hide card, else add the owl stamp
-    if (webStorage.settings.hideDonated) { 
+    if (webStorage.settings.showDonated) { 
         // Start the fade out effect
         d3.select(`#critter${id}`).style("width",0).style("height",330).classed("fadeout", true);
         // Hide the element after the fade animation, make sure to match timeout delay with 
