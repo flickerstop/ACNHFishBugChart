@@ -10,15 +10,12 @@ let showDonatedChipSet = null;
 
 
 function init(){
-    initMDC();
-
     $('.fish-bug-switch-selected').toggleClass('fish');
     $("#fish-bug-switch").click(function() {
         $('.fish-bug-switch-selected').toggleClass('bug');
         $('.fish-bug-switch-selected').toggleClass('fish');
         changeCritterType();
     });
-
 
     $.getJSON("./json/fish.json", function(fishResult){
         // load the data for all the fish
@@ -28,12 +25,13 @@ function init(){
             bugData = bugResult;
 
             // Load the list of donated critters
+            console.log("webstoreage")
             webStorage = load();
 
             // Set the hemisphere button
             // d3.select("#hemisphereButton").html(webStorage.settings.hemisphere + " Hemisphere");
             // d3.select("#hideDonateButton").html(`Hide: ${webStorage.settings.hideDonated}`);
-
+            initMDC();
             checkDate();
         });
     });
@@ -48,6 +46,8 @@ function init(){
             $this.val($this.val().substring(0,maxCount));
         }
     }); 
+
+    
 }
 
 /**
@@ -287,7 +287,7 @@ function markDonate(type,id){
     save("Added new donated critter");
 
     // If hide donated critter setting enabled then hide card, else add the owl stamp
-    if (webStorage.settings.showDonated) { 
+    if (!webStorage.settings.showDonated) { 
         // Start the fade out effect
         d3.select(`#critter${id}`).style("width",0).style("height",330).classed("fadeout", true);
         // Hide the element after the fade animation, make sure to match timeout delay with 
@@ -318,13 +318,16 @@ function initMDC(){
     d3.select("#timeInput").property("value",new Date().getHours());
     
     showDonatedChipSet = new mdc.chips.MDCChipSet(document.querySelector('.mdc-chip-set'));
-    
+   
+    showDonatedChipSet.chips[0].selected = webStorage.settings.showDonated;
+    showDonatedChipSet.chips[1].selected = webStorage.settings.showNonDonated;
+   
     showDonatedChipSet.listen("MDCChip:selection", function(event){
-        if (event.chipId == "showDonated"){
-            setShowDonated(event.selected);
+        if (event.detail.chipId == "showDonated"){
+            setShowDonated(event.detail.selected);
 
-        }else if(event.chipId == "showNotDonated"){
-            setShowNonDonated(event.selected)
+        }else if(event.detail.chipId == "showNotDonated"){
+            setShowNonDonated(event.detail.selected)
         }
 
     });
