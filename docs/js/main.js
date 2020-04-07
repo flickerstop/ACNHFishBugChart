@@ -5,36 +5,12 @@ let webStorage = null;
 let shownCritterType = "fish";
 
 let monthSelect = null;
+let showDonatedChipSet = null;
+
 
 
 function init(){
-    mdc.autoInit();
-    const textField = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
-    //const select = new mdc.select.MDCSelect(document.querySelector('.mdc-select'));
-    // const selects = [].map.call(document.querySelectorAll('.mdc-select'), function(el) {
-    //     return new mdc.select.MDCSelect(el);
-    // });
-
-    // $("#critterSearch").on("change", function(e){
-    //     console.log(e);
-    // });
-    monthSelect = new mdc.select.MDCSelect(document.querySelector('#monthSelect'));
-    monthSelect.value = (new Date().getMonth()+1).toString();
-    monthSelect.listen('MDCSelect:change', () => {
-        checkDate();
-      });
-    d3.select("#timeInput").property("value",new Date().getHours());
-    // for (let i = 0; i < selects.length; i++) {
-    //     selects[i].listen('MDCSelect:change', () => {
-    //         checkDate();
-    //       });
-        
-    // }
-    // for (const mdcSelect in selects) {
-    //     mdcSelect.listen('MDCSelect:change', () => {
-    //         checkDate();
-    //       });
-    // }
+    initMDC();
 
     $('.fish-bug-switch-selected').toggleClass('fish');
     $("#fish-bug-switch").click(function() {
@@ -43,10 +19,7 @@ function init(){
         changeCritterType();
     });
 
-    // Get the current date and set it
-    d3.select("#month").property("value",new Date().getMonth());
-    // Get the current time and set it
-    
+  
     
 
     $.getJSON("./json/fish.json", function(fishResult){
@@ -320,3 +293,31 @@ function markDonate(type,id){
     //checkDate();
 }
 
+function initMDC(){
+    mdc.autoInit();
+    showDonatedChipSet = new mdc.chips.MDCChipSet(document.querySelector('.mdc-chip-set'));
+    
+    //const textField = new mdc.textField.MDCTextField(document.querySelector('.mdc-text-field'));
+    //const select = new mdc.select.MDCSelect(document.querySelector('.mdc-select'));
+    const textFields = [].map.call(document.querySelectorAll('.mdc-text-field'), function(el) {
+        return new mdc.textField.MDCTextField(el);
+    });
+
+    monthSelect = new mdc.select.MDCSelect(document.querySelector('#monthSelect'));
+    monthSelect.value = (new Date().getMonth()+1).toString();
+    monthSelect.listen('MDCSelect:change', () => {
+        checkDate();
+      });
+    d3.select("#timeInput").property("value",new Date().getHours());
+    // for (let i = 0; i < selects.length; i++) {
+    //     selects[i].listen('MDCSelect:change', () => {
+    //         checkDate();
+    //       });
+        
+    // }
+    // for (const mdcSelect in selects) {
+    //     mdcSelect.listen('MDCSelect:change', () => {
+    //         checkDate();
+    //       });
+    // }
+}

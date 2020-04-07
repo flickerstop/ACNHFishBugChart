@@ -86,10 +86,21 @@ body{
 }
 
 .mdc-chip {
-    padding: 0px 7px;
+    padding: 0px 8px;
+    margin: 3px !important;
+    background: #e0e2ca;
+}
+.mdc-chip--selected{
+    background: #30a6744a;;
+}
+.mdc-chip-set{
+    padding: 0px;
 }
 .mdc-chip__text{
     font-size: 11px;
+}
+.mdc-chip__primary-action:focus {
+    outline: none;
 }
 /* #endregion */
 
@@ -330,3 +341,11 @@ body{
 
 /* #endregion */
 
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

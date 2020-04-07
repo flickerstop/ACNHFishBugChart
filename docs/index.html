@@ -95,7 +95,7 @@
                     </div>
                     <div class="drawer-item">
                         <div class="mdc-chip-set mdc-chip-set--filter" role="grid">
-                            <div class="mdc-chip mdc-chip--selected" role="row">
+                            <div id="showDonated" class="mdc-chip mdc-chip--selected" role="row">
                               <div class="mdc-chip__ripple"></div>
                               <!-- <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i> -->
                               <span class="mdc-chip__checkmark" >
@@ -106,11 +106,11 @@
                               </span>
                               <span role="gridcell">
                                 <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                  <span class="mdc-chip__text">Donated</span>
+                                  <span class="mdc-chip__text unselectable">Donated</span>
                                 </span>
                               </span>
                             </div>
-                            <div class="mdc-chip mdc-chip--selected" role="row">
+                            <div id="showNotDonated" class="mdc-chip mdc-chip--selected" role="row">
                                 <div class="mdc-chip__ripple"></div>
                                 <!-- <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i> -->
                                 <span class="mdc-chip__checkmark" >
@@ -121,7 +121,7 @@
                                 </span>
                                 <span role="gridcell">
                                   <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                    <span class="mdc-chip__text">Not Donated</span>
+                                    <span class="mdc-chip__text unselectable">Not Donated</span>
                                   </span>
                                 </span>
                               </div>
