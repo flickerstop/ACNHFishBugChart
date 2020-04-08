@@ -9,11 +9,13 @@
 }
 
 *{
-    color: #504d44;
+    /* color: #504d44; */
     font-family: Humming !important;
     line-height: 1.5;
 }
-
+label,span{
+    color: #504d44;
+}
 body{
     /* background-color: #4fbaa0; */
     /* background-color: #f1e9be; */
@@ -38,6 +40,7 @@ body{
 }
 
 .main-section{
+    width: 100%;
     margin-left: 250px;
     padding: 20px 25px;
 }
@@ -81,6 +84,10 @@ body{
     position: absolute;
     top: 23px;
     left: 91px;
+}
+.time-label-float{
+    transform: translateY(-106%) scale(0.75) !important;
+    color: var(--mdc-theme-primary) !important;
 }
 /* Chrome, Safari, Edge, Opera */
 #timeInput::-webkit-outer-spin-button,
@@ -195,20 +202,30 @@ body{
     animation-delay: 1s; 
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
+    /* display: flex;
+    flex-flow: row wrap;
+    */
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .card{
     width: 300px;
-    margin: 10px;
-    float: left;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* margin-bottom: 15px; */
 
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
-    /* border-radius: 15px; */
 }
 .card.fadeout{
     opacity: 0;
+    width: 0;
+    height: 390px;
+    margin: 0;
 }
 
 .card-image{
@@ -216,24 +233,36 @@ body{
     height: 170px;
     overflow: initial;
 }
-
-.card-title{
+.card-title-container{
     width: fit-content;
-    padding: 3px;
     margin-top: 5;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 12px 12px 3px 12px;
+    background-color: #00000038;
+    box-shadow: 0px 2px 2px 0px #00000038;
+}
+.card-title{
+    padding: 3px;
     border-radius: 3px;
     background: #fffdf2c5;
-    transform: rotate(-2deg);
+    transform: rotate(-2deg) translateY(-2px);
+
+    border-radius: 3px;
+    border-image-slice: 32 32 32 32 fill;
+    border-image-width: 15px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: stretch stretch;
+    border-image-source: url(../images/critter-label-border.png);
 }
+
 
 .card-title-text{
     font-size: 18px;
     color: #504d44;
     padding: 0px 10px;
-    border: 4px double #504d44;
-    border-radius: 3px;
+    /* border: 4px double #504d44;
+    border-radius: 3px; */
 }
 
 .card-fishsize{
@@ -285,6 +314,7 @@ body{
     display: flex;
     align-items: center;
     font-size: 16px;
+    color: #504d44;
 }
 
 .card-bells img{
@@ -302,26 +332,33 @@ body{
 .card-info-row{
     display: flex;
     margin-bottom: 1px;
+    min-height: 60px;
 }
 
 .card-info-row-name,
 .card-info-row-data{
     width: 50%;
-    padding: 5px;
     text-align: center;
     border-radius: 5px;
-    margin: 0px 2px;
-    font-size: 14px;
+    /* line-height: 42px; */
+    display: flex;
 }
-
+.card-info-row-name p,
+.card-info-row-data p{
+    text-align: center;
+    margin: auto;
+}
 .card-info-row-name{
-    color: #f5f6e1;
+    color: #f5f6e1 !important;
     background:#8a7b66;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .card-info-row-data{
-    color: #8a7b66;
+    color: #8a7b66 !important;
+    font-size: 14px;
+    margin-left: 2px;
+    flex-wrap: wrap;
 }
 
 .card-info-row-monthdata{
@@ -333,7 +370,7 @@ body{
     width: 28px;
     padding: 3px;
     border-radius: 5px;
-    margin: 1px;
+    margin: 1px 0px 0px 2px;
     text-align: center;
     color: #8a7b66;
 }
@@ -341,29 +378,6 @@ body{
 .card-info-month-checked{
     color: #f5f6e1 !important;
     background: #c19251;
-}
-
-.card .image{
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    width: 150px;
-    height: 100px;
-    background-color: darkgreen;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-
-.card .name{
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-
-}
-
-.card .donateButton{
-    background-color: chocolate;
-    cursor: pointer;
 }
 
 /* #endregion */

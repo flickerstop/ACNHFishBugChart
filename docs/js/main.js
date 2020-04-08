@@ -72,9 +72,9 @@ function checkDate(){
         addCritterCard(critter,shownCritterType);
     }
 
-    // re init ripple effect on all cards, currently not working?
-    const selector = '.mdc-button, .mdc-icon-button, .mdc-card__primary-action .mdc-line-ripple';
-    const ripples = [].map.call(document.querySelectorAll(selector), function(el) {
+    // re init ripple effect on all cards
+    const selector = '.mdc-card__primary-action, .mdc-line-ripple';
+    const ripples = [].map.call(document.querySelectorAll('.mdc-card__primary-action'), function(el) {
         return new mdc.ripple.MDCRipple(el);
     });
 
@@ -179,6 +179,7 @@ function addCritterCard(critter, critterType){
 
     let card = d3.select("#critterCards")
                     .append("div").attr("class","mdc-card mdc-elevation--z3 card").attr("id", `critter${critter.id}`)
+                    // .append("div").attr("class","mdc-card mdc-elevation--z3")
                     .append("div").attr("class","mdc-card__primary-action");
 
     // Div for the critter image
@@ -186,7 +187,8 @@ function addCritterCard(critter, critterType){
                     .style("background-image",`url('./images/${critterType=="fish"?"fish":"bugs"}/${critter.name}.png')`);
 
     // Image Title
-    cardImage.append("div").attr("class","card-title")
+    cardImage.append("div").attr("class","card-title-container")
+        .append("div").attr("class","card-title")
         .append("div").attr("class","card-title-text").html(critter.name);
 
     // If Donated
@@ -223,22 +225,20 @@ function addCritterCard(critter, critterType){
     // Location
     let cardInfoLocation = cardInfo.append("div").attr("class","card-info-row");
 
-    cardInfoLocation.append("div").attr("class","card-info-row-name").html("Location");
-    cardInfoLocation.append("div").attr("class","card-info-row-data").html(critter.found);
+    cardInfoLocation.append("div").attr("class","card-info-row-name").append("p").html("Location");
+    cardInfoLocation.append("div").attr("class","card-info-row-data").append("p").html(critter.found);
 
     // Time
     let cardInfoTime = cardInfo.append("div").attr("class","card-info-row");
-    cardInfoTime.append("div").attr("class","card-info-row-name").html("Time");
-    cardInfoTime.append("div").attr("class","card-info-row-data").html(critter.timeString);
+    cardInfoTime.append("div").attr("class","card-info-row-name").append("p").html("Time");
+    cardInfoTime.append("div").attr("class","card-info-row-data").append("p").html(critter.timeString);
 
 
     // Months
     let cardInfoMonths = cardInfo.append("div").attr("class","card-info-row");
-
-    cardInfoMonths.append("div").attr("class","card-info-row-name")
-        .attr("style", "line-height: 4;").html("Months");
+    cardInfoMonths.append("div").attr("class","card-info-row-name").append("p").html("Months");
     
-    let cardInfoMonthsData = cardInfoMonths.append("div").attr("style", "width: 160px;");
+    let cardInfoMonthsData = cardInfoMonths.append("div").attr("class","card-info-row-data");
     
     let months = {1:"Jan",2:"Feb",3:"Mar",4:"Apr",5:"May",6:"Jun",7:"Jul",8:"Aug",9:"Sep",10:"Oct",11:"Nov",12:"Dec"};
     let northHemisphereOption = webStorage.settings.hemisphere == "north";
@@ -291,7 +291,7 @@ function markDonate(type,id){
     // If hide donated critter setting enabled then hide card, else add the owl stamp
     if (!webStorage.settings.showDonated) { 
         // Start the fade out effect
-        d3.select(`#critter${id}`).style("width",0).style("height",330).classed("fadeout", true);
+        d3.select(`#critter${id}`).classed("fadeout", true);
         // Hide the element after the fade animation, make sure to match timeout delay with 
         // .card css class transition property (ex. transition: all 0.3s linear)
         setTimeout(()=>{d3.select(`#critter${id}`).style("display","none");}, 300)
@@ -336,4 +336,8 @@ function initMDC(){
 
     });
 
+    const selector = '.mdc-line-ripple';
+    const ripples = [].map.call(document.querySelectorAll(selector), function(el) {
+        return new mdc.ripple.MDCRipple(el);
+    });
 }
