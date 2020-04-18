@@ -14,7 +14,7 @@
         
         <!-- Javascript -->
         <script src="./js/externalLibs/jquery-3.4.1.min.js"></script>
-        <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.js"></script>
+        <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
         <script src="./js/externalLibs/d3.min.js"></script>
 
         <script src="./js/main.js"></script>
@@ -23,170 +23,266 @@
         
     </head>
     <body>
+      <!--*********************************************
+      *                 Side bar
+      **********************************************-->
+      <aside class="mdc-drawer main-drawer">
+        <div class="mdc-drawer__content" style="padding: 10px 15px;">
+          <nav class="mdc-list">
+              <div class="drawer-item">
+                  <label class="mdc-text-field mdc-text-field--with-leading-icon">
+                      <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0" role="button">search</i>
+                      <input id="critterSearch" onkeyup="searchCritter(this.value,shownCritterType)" class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+                      <span class="mdc-floating-label" id="my-label-id">Search</span>
+                      <div class="mdc-line-ripple"></div>
+                  </label>
+              </div>
+              <div class="drawer-item">
+                  <div id="monthSelect" class="mdc-select mdc-select--with-leading-icon">
+                      <div class="mdc-select__anchor select-width-class">
+                      <i class="material-icons mdc-select__icon" tabindex="0" role="button">event</i>
+                        <i class="mdc-select__dropdown-icon"></i>
+                        <div class="mdc-select__selected-text"></div>
+                        <span class="mdc-floating-label">Month</span>
+                        <div class="mdc-line-ripple"></div>
+                      </div>
+                    
+                      <div class="mdc-select__menu mdc-menu mdc-menu-surface select-width-class">
+                        <ul class="mdc-list">
+                          <!-- <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li> -->
+                          <li class="mdc-list-item" data-value='1'>January</li>
+                          <li class="mdc-list-item" data-value='2'>February</li>
+                          <li class="mdc-list-item" data-value='3'>March</li>
+                          <li class="mdc-list-item" data-value='4'>April</li>
+                          <li class="mdc-list-item" data-value='5'>May</li>
+                          <li class="mdc-list-item" data-value='6'>June</li>
+                          <li class="mdc-list-item" data-value='7'>July</li>
+                          <li class="mdc-list-item" data-value='8'>August</li>
+                          <li class="mdc-list-item" data-value='9'>September</li>
+                          <li class="mdc-list-item" data-value='10'>October</li>
+                          <li class="mdc-list-item" data-value='11'>November</li>
+                          <li class="mdc-list-item" data-value='12'>December</li>
+                        </ul>
+                      </div>
+                  </div>
+              </div>
+              <div class="drawer-item">
+                  <label class="mdc-text-field mdc-text-field--with-leading-icon select-width-class" >
+                      <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0" role="button">schedule</i>
+                      <input id="timeInput" onkeyup="checkDate()" onchange="checkDate()" class="mdc-text-field__input max-length"
+                          type="number" min="0" max="23" maxlength="2" aria-labelledby="my-label-id"
+                          aria-controls="username-helper-text" aria-describedby="username-helper-text">
+                          <div id="timeinputzeros">:00</div>
+                      <span class="mdc-floating-label mdc-floating-label--float-above time-label-float" id="my-label-id">Time (24 hour)</span>
+                      <div class="mdc-line-ripple"></div>
+                  </label>
+                  <!-- <div class="mdc-text-field-helper-line">
+                    <div id="username-helper-text" class="mdc-text-field-helper-text" aria-hidden="true">
+                      24 Hour
+                    </div>
+                  </div> -->
+              </div>
+              <div class="drawer-item bottom-border" style="height: 35px; padding-top: 20px;">
+                <div class="drawer-item-label">Hemisphere</div>
+                <label style="margin-left: 36px; margin-right: 5px;" for="basic-switch">North</label>
+                <div id="hemisphereSwitch" class="mdc-switch">
+                  <div class="mdc-switch__track"></div>
+                  <div class="mdc-switch__thumb-underlay">
+                    <div class="mdc-switch__thumb"></div>
+                    <input type="checkbox" id="basic-switch" class="mdc-switch__native-control" onchange="swapHemisphere()" role="switch">
+                  </div>
+                </div>
+                <label for="basic-switch">South</label>
+              </div>
+              <div class="drawer-item">
+                  <div id="donateChipSet" class="mdc-chip-set mdc-chip-set--filter" role="grid"
+                  style="display: grid; grid-template-columns: 1fr 1.3fr;">
+                      <div id="showDonated" class="mdc-chip" role="row">
+                        <div class="mdc-chip__ripple"></div>
+                        <!-- <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i> -->
+                        <span class="mdc-chip__checkmark" >
+                          <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                            <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                  d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                          </svg>
+                        </span>
+                        <span role="gridcell">
+                          <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                            <span class="mdc-chip__text unselectable">Donated</span>
+                          </span>
+                        </span>
+                      </div>
+                      <div id="showNotDonated" class="mdc-chip" role="row">
+                          <div class="mdc-chip__ripple"></div>
+                          <!-- <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i> -->
+                          <span class="mdc-chip__checkmark" >
+                            <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                              <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                    d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                            </svg>
+                          </span>
+                          <span role="gridcell">
+                            <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                              <span class="mdc-chip__text unselectable">Not Donated</span>
+                            </span>
+                          </span>
+                        </div>
+                    </div>
+              </div>
+              <div class="drawer-item">
+                <div id="fishLocationChipSet" class="mdc-chip-set mdc-chip-set--filter" role="grid"
+                  style="display: grid; grid-template-columns: 1fr 1fr;">
+                    <div id="Sea" class="mdc-chip" role="row">
+                      <div class="mdc-chip__ripple"></div>
+                      <span class="mdc-chip__checkmark" >
+                        <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                          <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                        </svg>
+                      </span>
+                      <span role="gridcell">
+                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                          <span class="mdc-chip__text unselectable">Sea</span>
+                        </span>
+                      </span>
+                    </div>
+                    <div id="River" class="mdc-chip" role="row">
+                      <div class="mdc-chip__ripple"></div>
+                      <span class="mdc-chip__checkmark" >
+                        <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                          <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                        </svg>
+                      </span>
+                      <span role="gridcell">
+                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                          <span class="mdc-chip__text unselectable">River</span>
+                        </span>
+                      </span>
+                    </div>
+                    
+                    <div id="Pond" class="mdc-chip" role="row">
+                      <div class="mdc-chip__ripple"></div>
+                      <span class="mdc-chip__checkmark" >
+                        <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                          <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                        </svg>
+                      </span>
+                      <span role="gridcell">
+                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                          <span class="mdc-chip__text unselectable">Pond</span>
+                        </span>
+                      </span>
+                    </div>
+                    <div id="Pier" class="mdc-chip" role="row">
+                      <div class="mdc-chip__ripple"></div>
+                      <span class="mdc-chip__checkmark" >
+                        <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                          <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                        </svg>
+                      </span>
+                      <span role="gridcell">
+                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                          <span class="mdc-chip__text unselectable">Pier</span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+              </div>
+              <div class="drawer-item">
+                <div id="bugLocationChipSet" class="mdc-chip-set mdc-chip-set--filter" role="grid"
+                  style="display: grid; grid-template-columns: 1fr 1fr;">
+                    <div id="Flying" class="mdc-chip" role="row">
+                      <div class="mdc-chip__ripple"></div>
+                      <span class="mdc-chip__checkmark" >
+                        <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                          <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                        </svg>
+                      </span>
+                      <span role="gridcell">
+                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                          <span class="mdc-chip__text unselectable">Flying</span>
+                        </span>
+                      </span>
+                    </div>
+                    <div id="Ground" class="mdc-chip" role="row">
+                      <div class="mdc-chip__ripple"></div>
+                      <span class="mdc-chip__checkmark" >
+                        <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                          <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                        </svg>
+                      </span>
+                      <span role="gridcell">
+                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                          <span class="mdc-chip__text unselectable">Ground</span>
+                        </span>
+                      </span>
+                    </div>
+                    
+                    <div id="Pond" class="mdc-chip" role="row">
+                      <div class="mdc-chip__ripple"></div>
+                      <span class="mdc-chip__checkmark" >
+                        <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                          <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                        </svg>
+                      </span>
+                      <span role="gridcell">
+                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                          <span class="mdc-chip__text unselectable">Pond</span>
+                        </span>
+                      </span>
+                    </div>
+                    <div id="Pier" class="mdc-chip" role="row">
+                      <div class="mdc-chip__ripple"></div>
+                      <span class="mdc-chip__checkmark" >
+                        <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                          <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                        </svg>
+                      </span>
+                      <span role="gridcell">
+                        <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
+                          <span class="mdc-chip__text unselectable">Pier</span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+              </div>
+              <div id="footer" class="noHighlight">
+                <p>
+                  Made by <br>
+                  Flickerstop & Nuukamo
+                </p>
+              </div>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="page-content">
         <!--*********************************************
         *                 Top Bar
         **********************************************-->
-        <div id="topBar" class="top-bar mdc-elevation--z7">
-            <div id="fish-bug-switch" class="fish-bug-switch">
-                <div id="critterTypeSwitch" class="fish-bug-switch-selected"></div>
-            </div>
-            <!-- <div id="openSettingsButton" onclick="openSidebar()"></div> -->
+        <div id="topBar" class="top-bar">
+          <div id="fish-bug-switch" class="fish-bug-switch mdc-elevation--z2">
+              <div id="critterTypeSwitch" class="fish-bug-switch-selected"></div>
+          </div>
         </div>
 
-        <div class="page-content">
-            <!--*********************************************
-            *                 Side bar
-            **********************************************-->
-
-            <aside class="mdc-drawer main-drawer">
-                <div class="mdc-drawer__content" style="padding: 10px 15px;">
-                <nav class="mdc-list">
-                    <div class="drawer-item">
-                        <label class="mdc-text-field mdc-text-field--with-leading-icon">
-                            <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0" role="button">search</i>
-                            <input id="critterSearch" onkeyup="searchCritter(this.value,shownCritterType)" class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
-                            <span class="mdc-floating-label" id="my-label-id">Search</span>
-                            <div class="mdc-line-ripple"></div>
-                        </label>
-                    </div>
-                    <div class="drawer-item">
-                        <div id="monthSelect" class="mdc-select mdc-select--with-leading-icon">
-                            <div class="mdc-select__anchor select-width-class">
-                            <i class="material-icons mdc-select__icon" tabindex="0" role="button">event</i>
-                              <i class="mdc-select__dropdown-icon"></i>
-                              <div class="mdc-select__selected-text"></div>
-                              <span class="mdc-floating-label">Month</span>
-                              <div class="mdc-line-ripple"></div>
-                            </div>
-                          
-                            <div class="mdc-select__menu mdc-menu mdc-menu-surface select-width-class">
-                              <ul class="mdc-list">
-                                <!-- <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li> -->
-                                <li class="mdc-list-item" data-value='1'>January</li>
-                                <li class="mdc-list-item" data-value='2'>February</li>
-                                <li class="mdc-list-item" data-value='3'>March</li>
-                                <li class="mdc-list-item" data-value='4'>April</li>
-                                <li class="mdc-list-item" data-value='5'>May</li>
-                                <li class="mdc-list-item" data-value='6'>June</li>
-                                <li class="mdc-list-item" data-value='7'>July</li>
-                                <li class="mdc-list-item" data-value='8'>August</li>
-                                <li class="mdc-list-item" data-value='9'>September</li>
-                                <li class="mdc-list-item" data-value='10'>October</li>
-                                <li class="mdc-list-item" data-value='11'>November</li>
-                                <li class="mdc-list-item" data-value='12'>December</li>
-                              </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="drawer-item">
-                        <label class="mdc-text-field mdc-text-field--with-leading-icon select-width-class" >
-                            <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading" tabindex="0" role="button">schedule</i>
-                            <input id="timeInput" onkeyup="checkDate()" onchange="checkDate()" class="mdc-text-field__input max-length"
-                                type="number" min="0" max="23" maxlength="2" aria-labelledby="my-label-id"
-                                aria-controls="username-helper-text" aria-describedby="username-helper-text">
-                                <div id="timeinputzeros">:00</div>
-                            <span class="mdc-floating-label mdc-floating-label--float-above time-label-float" id="my-label-id">Time (24 hour)</span>
-                            <div class="mdc-line-ripple"></div>
-                        </label>
-                        <!-- <div class="mdc-text-field-helper-line">
-                          <div id="username-helper-text" class="mdc-text-field-helper-text" aria-hidden="true">
-                            24 Hour
-                          </div>
-                        </div> -->
-                    </div>
-                    <div class="drawer-item bottom-border" style="height: 35px; padding-top: 20px;">
-                      <div class="drawer-item-label">Hemisphere</div>
-                      <label style="margin-left: 36px; margin-right: 5px;" for="basic-switch">North</label>
-                      <div id="hemisphereSwitch" class="mdc-switch">
-                        <div class="mdc-switch__track"></div>
-                        <div class="mdc-switch__thumb-underlay">
-                          <div class="mdc-switch__thumb"></div>
-                          <input type="checkbox" id="basic-switch" class="mdc-switch__native-control" onchange="swapHemisphere()" role="switch">
-                        </div>
-                      </div>
-                      <label for="basic-switch">South</label>
-                    </div>
-                    <div class="drawer-item">
-                        <div id="donateChipSet" class="mdc-chip-set mdc-chip-set--filter" role="grid">
-                            <div id="showDonated" class="mdc-chip" role="row">
-                              <div class="mdc-chip__ripple"></div>
-                              <!-- <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i> -->
-                              <span class="mdc-chip__checkmark" >
-                                <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
-                                  <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
-                                        d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                                </svg>
-                              </span>
-                              <span role="gridcell">
-                                <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                  <span class="mdc-chip__text unselectable">Donated</span>
-                                </span>
-                              </span>
-                            </div>
-                            <div id="showNotDonated" class="mdc-chip" role="row">
-                                <div class="mdc-chip__ripple"></div>
-                                <!-- <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i> -->
-                                <span class="mdc-chip__checkmark" >
-                                  <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
-                                    <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
-                                          d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                                  </svg>
-                                </span>
-                                <span role="gridcell">
-                                  <span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__primary-action">
-                                    <span class="mdc-chip__text unselectable">Not Donated</span>
-                                  </span>
-                                </span>
-                              </div>
-                          </div>
-                    </div>
-                </nav>
-                </div>
-            </aside>
-
-            <!--*********************************************
-            *                 Main Section
-            **********************************************-->
-            
-            <div class="main-section">
-                <div id="critterCards">
-                    Pick month/time
-                </div>
-            </div>
-        </div>
         <!--*********************************************
-        *                 Side bar
+        *                 Main Section
         **********************************************-->
         
-        <!-- <div id="settingsSideBar">
-            [x] <-- I'll make work <br>
-            plz don't kill me<br>
-            this looks bad I know...<br>
-            It's just temp looks<br>
-            <br>
-            Close with refresh<br>
-            OR<br>
-            closeSidebar()<br>
-
-            <div id="hideDonateButton" onclick="unhideDonated()">Hide: true</div>
-            <div id="hemisphereButton" onclick="swapHemisphere()"></div>
-
-            Filters to hide:<br>
-            <div class="jokeTempToggleText">River:</div><div class="jokeTempToggleOff"></div>
-            <div class="jokeTempToggleText">Pond:</div><div class="jokeTempToggleOff"></div>
-            <div class="jokeTempToggleText">Girls:</div><div class="jokeTempToggleOn"></div>
-            <div class="jokeTempToggleText">Sea:</div><div class="jokeTempToggleOff"></div>
-
-            Note:<br>
-            Filtering works, I just need to add toggles for it
-        </div> -->
-
-        <!--*********************************************
-        *                 Footer
-        **********************************************-->
-        <!-- <div id="footer" class="noHighlight">
-            Made by Flickerstop & Nuuka
-        </div> -->
+        <div class="main-section">
+            <div id="critterCards">
+                Pick month/time
+            </div>
+        </div>
+      </div>
     </body>
 
     <script>

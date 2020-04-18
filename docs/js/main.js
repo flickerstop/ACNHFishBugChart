@@ -13,6 +13,7 @@ let showDonatedChipSet = null;
 
 function init(){
     $('.fish-bug-switch-selected').toggleClass('fish');
+    $("#bugLocationChipSet").hide()
     $("#fish-bug-switch").click(function() {
         $('.fish-bug-switch-selected').toggleClass('bug');
         $('.fish-bug-switch-selected').toggleClass('fish');
@@ -123,6 +124,10 @@ function generateCritterList(month, time, critterType){
             }
         }
     }
+
+    if (webStorage.settings.sortBy != undefined){
+        returnList = returnList.sort((a,b) => parseInt(b.price.replace(",","")) - parseInt(a.price.replace(",","")));
+    }
     return returnList;
 }
 
@@ -138,7 +143,7 @@ function filterCritterList(critterList,critterType){
         // Go through all the filters
         for(let filter of filterList){
             // If the critter has this filter as an object value
-            if(Object.values(critter).includes(filter)){
+            if(Object.values(critter).includes(filter) || critter.found.startsWith(filter)){
                 // Save it to be removed
                 toRemove.push(critter.id);
             }
@@ -161,8 +166,12 @@ function filterCritterList(critterList,critterType){
  */
 function changeCritterType(){
     if(d3.select("#critterTypeSwitch").attr("class") == "fish-bug-switch-selected fish"){
+        $("#bugLocationChipSet").hide();
+        $("#fishLocationChipSet").show();
         shownCritterType = "fish"
     }else{
+        // $("#bugLocationChipSet").show();
+        $("#fishLocationChipSet").hide();
         shownCritterType = "bug"
     }
     checkDate();
@@ -321,11 +330,10 @@ function initMDC(){
     
     hemisphereSwitch = new mdc.switchControl.MDCSwitch(document.querySelector('#hemisphereSwitch'));
     hemisphereSwitch.checked = webStorage.settings.hemisphere == "south";
+    
     showDonatedChipSet = new mdc.chips.MDCChipSet(document.querySelector('#donateChipSet'));
-   
     showDonatedChipSet.chips[0].selected = webStorage.settings.showDonated;
-    showDonatedChipSet.chips[1].selected = webStorage.settings.showNonDonated;
-   
+    showDonatedChipSet.chips[1].selected = webStorage.settings.showNonDonated;   
     showDonatedChipSet.listen("MDCChip:selection", function(event){
         if (event.detail.chipId == "showDonated"){
             setShowDonated(event.detail.selected);
@@ -333,8 +341,22 @@ function initMDC(){
         }else if(event.detail.chipId == "showNotDonated"){
             setShowNonDonated(event.detail.selected)
         }
-
     });
+
+    const locationChipSet = new mdc.chips.MDCChipSet(document.querySelector("#fishLocationChipSet"));
+    locationChipSet.chips[0].selected = !webStorage.settings.filter.fish.includes("Sea");
+    locationChipSet.chips[1].selected = !webStorage.settings.filter.fish.includes("River");
+    locationChipSet.chips[2].selected = !webStorage.settings.filter.fish.includes("Pond");
+    locationChipSet.chips[3].selected = !webStorage.settings.filter.fish.includes("Pier");
+    locationChipSet.listen("MDCChip:selection", function(event){
+        if (event.detail.selected){
+            removeCritterFilter(event.detail.chipId,"fish");
+        }else{
+            addCritterFilter(event.detail.chipId,"fish");
+        }
+        checkDate();
+    });
+
 
     const selector = '.mdc-line-ripple';
     const ripples = [].map.call(document.querySelectorAll(selector), function(el) {
