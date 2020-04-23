@@ -1,3 +1,24 @@
+const defaultStorage = {
+    donated:{
+        fish:[],
+        bugs:[],
+        art:[]
+    },
+    settings:{
+        hemisphere: "north",
+        theme: "light",
+        timeTraveller: false,
+        sorting: "default",
+        showDonated: true,
+        showNonDonated: true,
+        filter: {
+            fish:[],
+            bug:[],
+            art:[]
+        }
+    }
+}
+
 function save(reason){
 
     if (typeof(Storage) !== "undefined") {
@@ -17,57 +38,11 @@ function load(){
     // Check if no WebStorage
     if(tempStorage == null){
         console.error("No WebStorage found, using default");
-        tempStorage = {};
-        save("Saved default storage");
+        webStorage = defaultStorage;
+    }else{
+        compareStorage(tempStorage,defaultStorage);
     }
-
-    // Check donated critters
-    if(tempStorage.donated == null){
-        console.error("Donated Critter data not found, using default");
-        tempStorage.donated = {
-            fish:[],
-            bugs:[]
-        }
-        save("Saved default donated Critters");
-    }
-
-    // Check settings
-    if(tempStorage.settings == null){
-        console.error("Settings data not found, using default");
-        tempStorage.settings = {
-            hemisphere: "north",
-            theme: "light",
-            timeTraveller: false,
-            sorting: "default",
-            filter: {
-                fish:[],
-                bug:[]
-            }
-        }
-        save("No settings, saving default");
-    }
-
-    // Adds filters if no filters were found (future proofing)
-    if(tempStorage.settings.filter == undefined){
-        tempStorage.settings.filter = {
-            fish:[],
-            bug:[]
-        }
-
-        save("No filters were found");
-    }
-
-    // Check if "showDonated" and "showNonDonated is there"
-    if(tempStorage.settings.showDonated == undefined){
-        delete tempStorage.settings.hideDonated;
-        tempStorage.settings.showDonated = true;
-        tempStorage.settings.showNonDonated = true;
-
-        console.error("Changing donated settings from old to new...");
-        save("Changed donated settings");
-    }
-
-
+    
     return tempStorage;
 
 
@@ -93,4 +68,22 @@ function deleteSave(){
     webStorage = null;
     console.error("rip");
     location.reload();
+}
+
+
+function compareStorage(newStorage,oldStorage,path =""){
+    // iterate through the keys
+    for(let key of Object.keys(oldStorage)){
+        // Check if the new storage contains this key also
+        if(Object.keys(newStorage).find(x=>x==key)){
+            // Check if this key is an object
+            if(typeof(oldStorage[key]) == "object" && !Array.isArray(oldStorage[key])){
+                // the old recurs-a-roo
+                compareStorage(newStorage[key],oldStorage[key],`${path}${key}.`);
+            }
+        }else{ // If this key doesn't exist 
+            console.error(`Did not find key "${path+key}", adding default storage variable.`);
+            newStorage[key] = oldStorage[key];
+        }
+    }
 }
