@@ -38,11 +38,12 @@ function load(){
     // Check if no WebStorage
     if(tempStorage == null){
         console.error("No WebStorage found, using default");
-        webStorage = defaultStorage;
+        tempStorage = webStorage = defaultStorage;
     }else{
         compareStorage(tempStorage,defaultStorage);
     }
     
+
     return tempStorage;
 
 

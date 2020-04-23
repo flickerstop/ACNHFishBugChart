@@ -91,7 +91,7 @@ function showSearchedCards(validCards){
  * @param {String} critterType "fish" or "bug"
  */
 function addCritterCard(critter, critterType, container){
-let timeStart = Date.now();
+    
     let donateList = critterType=="fish"?webStorage.donated.fish:webStorage.donated.bugs;
 
     let cardContainer = container.append("div").attr("class","mdc-card mdc-elevation--z3 card").attr("id", `critter${critter.id}`).style("display","none");
