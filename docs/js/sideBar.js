@@ -9,7 +9,7 @@ function swapHemisphere(){
     }
     save("Hemisphere Changed");
     // d3.select("#hemisphereButton").html(webStorage.settings.hemisphere + " Hemisphere");
-    checkDate();
+    updateCards();
 }
 
 /**
@@ -53,7 +53,7 @@ function removeCritterFilter(filter,critterType){
  */
 function searchCritter(searchString, critterType){
     if (searchString == ""){
-        checkDate();
+        updateCards();
         return;
     }
     let searchList = critterType == "fish"? fishData:bugData;
@@ -68,7 +68,7 @@ function searchCritter(searchString, critterType){
         }
     }
 
-    updateCards(validCritters);
+    showSearchedCards(validCritters);
 }
 
 /**
@@ -78,7 +78,7 @@ function searchCritter(searchString, critterType){
 function setShowDonated(value){
     webStorage.settings.showDonated = value;
     save("Set showDonated: " + value);
-    checkDate();
+    updateCards();
 }
 
 /**
@@ -88,5 +88,5 @@ function setShowDonated(value){
 function setShowNonDonated(value){
     webStorage.settings.showNonDonated = value;
     save("Set showNonDonated: " + value);
-    checkDate();
+    updateCards();
 }

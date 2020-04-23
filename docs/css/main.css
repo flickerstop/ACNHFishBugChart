@@ -40,7 +40,7 @@ body{
     flex: 1;
 }
 
-.main-section{
+#main-section{
     /* width: 100%; */
     /* margin-left: 250px; */
     padding: 0px 25px;
@@ -221,12 +221,12 @@ body{
     }
 }
  
-#critterCards{
-    opacity: 0%;
-    animation-name: fadeIn;
+.critterCards{
+    opacity: 100%;
+    /* animation-name: fadeIn;
     animation-delay: 1s; 
     animation-duration: 0.5s;
-    animation-fill-mode: forwards;
+    animation-fill-mode: forwards; */
     /* display: flex;
     flex-flow: row wrap;
     */
