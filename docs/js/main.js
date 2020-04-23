@@ -157,7 +157,7 @@ function initMDC(){
         }else{
             addCritterFilter(event.detail.chipId,"fish");
         }
-        checkDate();
+        updateCards();
     });
 
 
