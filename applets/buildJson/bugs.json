@@ -446,7 +446,7 @@
 	},
 	{
 		"id": 11,
-		"name": "Raja Brookes Birdwing",
+		"name": "Raja Brooke's Birdwing",
 		"found": "Flying near flowers",
 		"foundCategory": 2,
 		"weather": 1,
@@ -492,7 +492,7 @@
 	},
 	{
 		"id": 12,
-		"name": "Queen Alexandras Birdwing",
+		"name": "Queen Alexandra's Birdwing",
 		"found": "Flying near flowers",
 		"foundCategory": 2,
 		"weather": 1,
@@ -562,7 +562,7 @@
 	{
 		"id": 14,
 		"name": "Atlas Moth",
-		"found": "On trees (any kind)",
+		"found": "On trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "3000",
@@ -1194,7 +1194,7 @@
 	{
 		"id": 31,
 		"name": "Cicada Shell",
-		"found": "Shaking trees (hardwood or cedar only)",
+		"found": "Shaking hardwood/cedar trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "10",
@@ -1396,7 +1396,7 @@
 	{
 		"id": 37,
 		"name": "Mole Cricket",
-		"found": "Underground (dig where noise is loudest)",
+		"found": "Underground (where noise is loudest)",
 		"foundCategory": 6,
 		"weather": 0,
 		"price": "500",
@@ -1886,7 +1886,7 @@
 	{
 		"id": 51,
 		"name": "Earth-boring Dung Beetle",
-		"found": "On trees (any kind)",
+		"found": "On trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "300",
@@ -1912,7 +1912,7 @@
 	{
 		"id": 52,
 		"name": "Scarab Beetle",
-		"found": "On trees (any kind)",
+		"found": "On trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "10000",
@@ -1957,7 +1957,7 @@
 	{
 		"id": 53,
 		"name": "Drone Beetle",
-		"found": "On trees (any kind)",
+		"found": "On trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "200",
@@ -2026,7 +2026,7 @@
 	{
 		"id": 55,
 		"name": "Saw Stag",
-		"found": "On trees (any kind)",
+		"found": "On trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "2000",
@@ -2050,7 +2050,7 @@
 	{
 		"id": 56,
 		"name": "Miyama Stag",
-		"found": "On trees (any kind)",
+		"found": "On trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "1000",
@@ -2074,7 +2074,7 @@
 	{
 		"id": 57,
 		"name": "Giant Stag",
-		"found": "On trees (any kind)",
+		"found": "On trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "10000",
@@ -2107,7 +2107,7 @@
 	{
 		"id": 58,
 		"name": "Rainbow Stag",
-		"found": "On trees (any kind)",
+		"found": "On trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "6000",
@@ -2265,7 +2265,7 @@
 	{
 		"id": 62,
 		"name": "Horned Dynastid",
-		"found": "On trees (any kind)",
+		"found": "On trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "1350",
@@ -2421,7 +2421,7 @@
 	{
 		"id": 66,
 		"name": "Walking Stick",
-		"found": "On trees (any kind)",
+		"found": "On trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "600",
@@ -2483,7 +2483,7 @@
 	{
 		"id": 68,
 		"name": "Bagworm",
-		"found": "Shaking trees (hardwood or cedar only)",
+		"found": "Shaking hardwood/cedar trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "600",
@@ -2584,7 +2584,7 @@
 	{
 		"id": 72,
 		"name": "Fly",
-		"found": "Flying near trash (boots, tires, cans) or rotten turnips",
+		"found": "Flying near trash or rotten turnips",
 		"foundCategory": 1,
 		"weather": 0,
 		"price": "60",
@@ -2807,7 +2807,7 @@
 	{
 		"id": 78,
 		"name": "Spider",
-		"found": "Shaking trees (hardwood or cedar only)",
+		"found": "Shaking hardwood/cedar trees",
 		"foundCategory": 4,
 		"weather": 0,
 		"price": "600",

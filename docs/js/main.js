@@ -126,7 +126,7 @@ function generateCritterList(month, time, critterType){
     }
 
     if (webStorage.settings.sortBy != undefined){
-        returnList = returnList.sort((a,b) => parseInt(b.price.replace(",","")) - parseInt(a.price.replace(",","")));
+        //returnList = returnList.sort((a,b) => parseInt(b.price.replace(",","")) - parseInt(a.price.replace(",","")));
     }
     return returnList;
 }
@@ -192,8 +192,10 @@ function addCritterCard(critter, critterType){
                     .append("div").attr("class","mdc-card__primary-action");
 
     // Div for the critter image
-    let cardImage = card.append("div").attr("class","mdc-card__media card-image")
-                    .style("background-image",`url('./images/${critterType=="fish"?"fish":"bugs"}/${critter.name}.png')`);
+    let cardImage = card.append("div").attr("class","mdc-card__media card-image-bg");
+                    //.style("background-image",`url('./images/${critterType=="fish"?"fish":"bugs"}/${critter.name}.png')`);
+    cardImage.append("div").classed("card-image-container",true)
+        .append("img").attr("src",`./images/${critterType=="fish"?"fishtrim":"bugstrim"}/${critter.name}.png`).classed("card-image",true);
 
     // Image Title
     cardImage.append("div").attr("class","card-title-container")
@@ -218,7 +220,7 @@ function addCritterCard(critter, critterType){
     // Fish Size
     if(critterType=="fish"){
         let cardFishSize = cardImage.append("div").attr("class","card-fishsize");
-        cardFishSize.append("img").attr("src", `./images/fishSize/${critter.size}.png`);
+        cardFishSize.append("img").attr("src", `./images/fishSize/${critter.sizeCategory}.png`);
         cardFishSize.append("br");
         cardFishSize.append("div").html(critter.size);
     }

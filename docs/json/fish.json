@@ -1,1042 +1,2848 @@
 [
 	{
-		"id": "1",
+		"id": 1,
 		"name": "Bitterling",
 		"found": "River",
-		"size": "Smallest",
+		"foundCategory": 2,
+		"size": "X-Small",
+		"sizeCategory": 1,
 		"price": "900",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "November-March",
 		"dateStringS": "May-September",
-		"dateN": [11,12,1,2,3],
-		"dateS": [5,6,7,8,9]
+		"dateN": [
+			11,
+			12,
+			1,
+			2,
+			3
+		],
+		"dateS": [
+			5,
+			6,
+			7,
+			8,
+			9
+		]
 	},
 	{
-		"id": "2",
+		"id": 2,
 		"name": "Pale Chub",
 		"found": "River",
-		"size": "Smallest",
-		"price": "160",
-		"timeString": "9 am - 4 pm",
-		"time": [9,10,11,12,13,14,15,16],
+		"foundCategory": 2,
+		"size": "X-Small",
+		"sizeCategory": 1,
+		"price": "200",
+		"rarity": "Common",
+		"rarityCategory": 1,
+		"timeString": "9 a.m. - 4 p.m.",
+		"time": [
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "3",
+		"id": 3,
 		"name": "Crucian Carp",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Small",
+		"sizeCategory": 2,
 		"price": "160",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "4",
+		"id": 4,
 		"name": "Dace",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Medium",
+		"sizeCategory": 3,
 		"price": "240",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"rarity": "Common",
+		"rarityCategory": 1,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "5",
+		"id": 5,
 		"name": "Carp",
 		"found": "Pond",
+		"foundCategory": 1,
 		"size": "Large",
+		"sizeCategory": 5,
 		"price": "300",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "6",
+		"id": 6,
 		"name": "Koi",
 		"found": "Pond",
+		"foundCategory": 1,
 		"size": "Large",
-		"price": "4,000",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"sizeCategory": 5,
+		"price": "4000",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "7",
+		"id": 7,
 		"name": "Goldfish",
 		"found": "Pond",
-		"size": "Smallest",
-		"price": "1,300",
+		"foundCategory": 1,
+		"size": "X-Small",
+		"sizeCategory": 1,
+		"price": "1300",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "8",
+		"id": 8,
 		"name": "Pop-eyed Goldfish",
 		"found": "Pond",
-		"size": "Smallest",
-		"price": "1,300",
-		"timeString": "9 am - 4 pm",
-		"time": [9,10,11,12,13,14,15,16],
+		"foundCategory": 1,
+		"size": "X-Small",
+		"sizeCategory": 1,
+		"price": "1300",
+		"rarity": "Common",
+		"rarityCategory": 1,
+		"timeString": "9 a.m. - 4 p.m.",
+		"time": [
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "9",
+		"id": 9,
 		"name": "Ranchu Goldfish",
 		"found": "Pond",
+		"foundCategory": 1,
 		"size": "Small",
-		"price": "4,500",
-		"timeString": "9 am - 4 pm",
-		"time": [9,10,11,12,13,14,15,16],
+		"sizeCategory": 2,
+		"price": "4500",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "9 a.m. - 4 p.m.",
+		"time": [
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "10",
+		"id": 10,
 		"name": "Killifish",
 		"found": "Pond",
-		"size": "Smallest",
+		"foundCategory": 1,
+		"size": "X-Small",
+		"sizeCategory": 1,
 		"price": "300",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "April-August",
 		"dateStringS": "October-February",
-		"dateN": [4,5,6,7,8],
-		"dateS": [10,11,12,1,2]
+		"dateN": [
+			4,
+			5,
+			6,
+			7,
+			8
+		],
+		"dateS": [
+			10,
+			11,
+			12,
+			1,
+			2
+		]
 	},
 	{
-		"id": "11",
+		"id": 11,
 		"name": "Crawfish",
 		"found": "Pond",
+		"foundCategory": 1,
 		"size": "Small",
+		"sizeCategory": 2,
 		"price": "200",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "April-September",
 		"dateStringS": "October-March",
-		"dateN": [4,5,6,7,8,9],
-		"dateS": [10,11,12,1,2,3]
+		"dateN": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			10,
+			11,
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "12",
+		"id": 12,
 		"name": "Soft-shelled Turtle",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Large",
-		"price": "3,750",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"sizeCategory": 5,
+		"price": "3750",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "August-September",
 		"dateStringS": "February-March",
-		"dateN": [8,9],
-		"dateS": [2,3]
+		"dateN": [
+			8,
+			9
+		],
+		"dateS": [
+			2,
+			3
+		]
 	},
 	{
-		"id": "13",
+		"id": 13,
 		"name": "Snapping Turtle",
 		"found": "River",
-		"size": "X Large",
-		"price": "5,000",
-		"timeString": "9 am - 4 am",
-		"time": [0,1,2,3,4,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+		"foundCategory": 2,
+		"size": "Large",
+		"sizeCategory": 5,
+		"price": "5000",
+		"rarity": "Common",
+		"rarityCategory": 1,
+		"timeString": "9 p.m. - 4 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "April-October",
 		"dateStringS": "October-April",
-		"dateN": [4,5,6,7,8,9,10],
-		"dateS": [10,11,12,1,2,3,4]
+		"dateN": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10
+		],
+		"dateS": [
+			10,
+			11,
+			12,
+			1,
+			2,
+			3,
+			4
+		]
 	},
 	{
-		"id": "14",
+		"id": 14,
 		"name": "Tadpole",
 		"found": "Pond",
-		"size": "Smallest",
+		"foundCategory": 1,
+		"size": "X-Small",
+		"sizeCategory": 1,
 		"price": "100",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "March-July",
 		"dateStringS": "September-January",
-		"dateN": [3,4,5,6,7],
-		"dateS": [9,10,11,12,1]
+		"dateN": [
+			3,
+			4,
+			5,
+			6,
+			7
+		],
+		"dateS": [
+			9,
+			10,
+			11,
+			12,
+			1
+		]
 	},
 	{
-		"id": "15",
+		"id": 15,
 		"name": "Frog",
 		"found": "Pond",
+		"foundCategory": 1,
 		"size": "Small",
+		"sizeCategory": 2,
 		"price": "120",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "May-August",
 		"dateStringS": "November-Feburary",
-		"dateN": [5,6,7,8],
-		"dateS": [11,12,1,2]
+		"dateN": [
+			5,
+			6,
+			7,
+			8
+		],
+		"dateS": [
+			11,
+			12,
+			1,
+			2
+		]
 	},
 	{
-		"id": "16",
+		"id": 16,
 		"name": "Freshwater Goby",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Small",
+		"sizeCategory": 2,
 		"price": "400",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"rarity": "Common",
+		"rarityCategory": 1,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "17",
+		"id": 17,
 		"name": "Loach",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Small",
+		"sizeCategory": 2,
 		"price": "400",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "March-May",
 		"dateStringS": "September-November",
-		"dateN": [3,4,5],
-		"dateS": [9,10,11]
+		"dateN": [
+			3,
+			4,
+			5
+		],
+		"dateS": [
+			9,
+			10,
+			11
+		]
 	},
 	{
-		"id": "18",
+		"id": 18,
 		"name": "Catfish",
 		"found": "Pond",
+		"foundCategory": 1,
 		"size": "Large",
+		"sizeCategory": 5,
 		"price": "800",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"rarity": "Common",
+		"rarityCategory": 1,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "May-October",
 		"dateStringS": "November-April",
-		"dateN": [5,6,7,8,9,10],
-		"dateS": [11,12,1,2,3,4]
+		"dateN": [
+			5,
+			6,
+			7,
+			8,
+			9,
+			10
+		],
+		"dateS": [
+			11,
+			12,
+			1,
+			2,
+			3,
+			4
+		]
 	},
 	{
-		"id": "19",
+		"id": 19,
 		"name": "Giant Snakehead",
 		"found": "Pond",
-		"size": "X Large",
-		"price": "5,500",
-		"timeString": "9 am - 4 pm",
-		"time": [9,10,11,12,13,14,15,16],
+		"foundCategory": 1,
+		"size": "Large",
+		"sizeCategory": 5,
+		"price": "5500",
+		"rarity": "Rare",
+		"rarityCategory": 3,
+		"timeString": "9 a.m. - 4 p.m.",
+		"time": [
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16
+		],
 		"dateStringN": "June-August",
 		"dateStringS": "December-February",
-		"dateN": [6,7,8],
-		"dateS": [12,1,2]
+		"dateN": [
+			6,
+			7,
+			8
+		],
+		"dateS": [
+			12,
+			1,
+			2
+		]
 	},
 	{
-		"id": "20",
+		"id": 20,
 		"name": "Bluegill",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Small",
+		"sizeCategory": 2,
 		"price": "180",
-		"timeString": "9 am - 4 pm",
-		"time": [9,10,11,12,13,14,15,16],
+		"rarity": "Common",
+		"rarityCategory": 1,
+		"timeString": "9 a.m. - 4 p.m.",
+		"time": [
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "21",
+		"id": 21,
 		"name": "Yellow Perch",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Medium",
+		"sizeCategory": 3,
 		"price": "300",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "October-March",
 		"dateStringS": "April-September",
-		"dateN": [10,11,12,1,2,3],
-		"dateS": [4,5,6,7,8,9]
+		"dateN": [
+			10,
+			11,
+			12,
+			1,
+			2,
+			3
+		],
+		"dateS": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9
+		]
 	},
 	{
-		"id": "22",
+		"id": 22,
 		"name": "Black Bass",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Large",
+		"sizeCategory": 5,
 		"price": "400",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "23",
+		"id": 23,
 		"name": "Tilapia",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Medium",
+		"sizeCategory": 3,
 		"price": "800",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "June-October",
 		"dateStringS": "December-April",
-		"dateN": [6,7,8,9,10],
-		"dateS": [12,1,2,3,4]
+		"dateN": [
+			6,
+			7,
+			8,
+			9,
+			10
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3,
+			4
+		]
 	},
 	{
-		"id": "24",
+		"id": 24,
 		"name": "Pike",
 		"found": "River",
-		"size": "X Large",
-		"price": "1,800",
+		"foundCategory": 2,
+		"size": "X-Large",
+		"sizeCategory": 6,
+		"price": "1800",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "September-December",
 		"dateStringS": "March-June",
-		"dateN": [9,10,11,12],
-		"dateS": [3,4,5,6]
+		"dateN": [
+			9,
+			10,
+			11,
+			12
+		],
+		"dateS": [
+			3,
+			4,
+			5,
+			6
+		]
 	},
 	{
-		"id": "25",
+		"id": 25,
 		"name": "Pond Smelt",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Small",
-		"price": "500",
+		"sizeCategory": 2,
+		"price": "400",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "December-February",
 		"dateStringS": "June-August",
-		"dateN": [12,1,2],
-		"dateS": [6,7,8]
+		"dateN": [
+			12,
+			1,
+			2
+		],
+		"dateS": [
+			6,
+			7,
+			8
+		]
 	},
 	{
-		"id": "26",
+		"id": 26,
 		"name": "Sweetfish",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Medium",
+		"sizeCategory": 3,
 		"price": "900",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "July-September",
 		"dateStringS": "January-March",
-		"dateN": [7,8,9],
-		"dateS": [1,2,3]
+		"dateN": [
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "27",
+		"id": 27,
 		"name": "Cherry Salmon",
-		"found": "River (Clifftop)",
+		"found": "River (clifftop)",
+		"foundCategory": 2,
 		"size": "Medium",
-		"price": "1,000",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"sizeCategory": 3,
+		"price": "1000",
+		"rarity": "Common",
+		"rarityCategory": 1,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "March-June, September-November",
 		"dateStringS": "March-May, September-December",
-		"dateN": [3,4,5,6,9,10,11],
-		"dateS": [3,4,5,9,10,11,12]
+		"dateN": [
+			3,
+			4,
+			5,
+			6,
+			9,
+			10,
+			11
+		],
+		"dateS": [
+			3,
+			4,
+			5,
+			9,
+			10,
+			11,
+			12
+		]
 	},
 	{
-		"id": "28",
+		"id": 28,
 		"name": "Char",
-		"found": "River (Clifftop)",
+		"found": "River (clifftop)",
+		"foundCategory": 2,
 		"size": "Medium",
-		"price": "3,800",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"sizeCategory": 3,
+		"price": "3800",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "March-June, September-November",
 		"dateStringS": "March-May, September-December",
-		"dateN": [3,4,5,6,9,10,11],
-		"dateS": [3,4,5,9,10,11,12]
+		"dateN": [
+			3,
+			4,
+			5,
+			6,
+			9,
+			10,
+			11
+		],
+		"dateS": [
+			3,
+			4,
+			5,
+			9,
+			10,
+			11,
+			12
+		]
 	},
 	{
-		"id": "29",
+		"id": 29,
 		"name": "Golden Trout",
-		"found": "River (Clifftop)",
+		"found": "River (clifftop)",
+		"foundCategory": 2,
 		"size": "Medium",
-		"price": "15,000",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"sizeCategory": 3,
+		"price": "15000",
+		"rarity": "Ultra-rare",
+		"rarityCategory": 4,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "March-June, September-November",
 		"dateStringS": "March-May, September-December",
-		"dateN": [3,4,5,6,9,10,11],
-		"dateS": [3,4,5,9,10,11,12]
+		"dateN": [
+			3,
+			4,
+			5,
+			6,
+			9,
+			10,
+			11
+		],
+		"dateS": [
+			3,
+			4,
+			5,
+			9,
+			10,
+			11,
+			12
+		]
 	},
 	{
-		"id": "30",
+		"id": 30,
 		"name": "Stringfish",
-		"found": "River (Clifftop)",
-		"size": "Largest",
-		"price": "15,000",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"found": "River (clifftop)",
+		"foundCategory": 2,
+		"size": "X-Large",
+		"sizeCategory": 6,
+		"price": "15000",
+		"rarity": "Ultra-rare",
+		"rarityCategory": 4,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "December-March",
 		"dateStringS": "June-September",
-		"dateN": [12,1,2,3],
-		"dateS": [6,7,8,9]
+		"dateN": [
+			12,
+			1,
+			2,
+			3
+		],
+		"dateS": [
+			6,
+			7,
+			8,
+			9
+		]
 	},
 	{
-		"id": "31",
+		"id": 31,
 		"name": "Salmon",
 		"found": "River (mouth)",
-		"size": "Small",
+		"foundCategory": 2,
+		"size": "Large",
+		"sizeCategory": 5,
 		"price": "700",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "September",
 		"dateStringS": "March",
-		"dateN": [9],
-		"dateS": [3]
+		"dateN": [
+			9
+		],
+		"dateS": [
+			3
+		]
 	},
 	{
-		"id": "32",
+		"id": 32,
 		"name": "King Salmon",
 		"found": "River (mouth)",
-		"size": "Smallest",
-		"price": "1,800",
+		"foundCategory": 2,
+		"size": "X-Large",
+		"sizeCategory": 6,
+		"price": "1800",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "September",
 		"dateStringS": "March",
-		"dateN": [9],
-		"dateS": [3]
+		"dateN": [
+			9
+		],
+		"dateS": [
+			3
+		]
 	},
 	{
-		"id": "33",
+		"id": 33,
 		"name": "Mitten Crab",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Small",
-		"price": "2,000",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"sizeCategory": 2,
+		"price": "2000",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "September-November",
 		"dateStringS": "March-May",
-		"dateN": [9,10,11],
-		"dateS": [3,4,5]
+		"dateN": [
+			9,
+			10,
+			11
+		],
+		"dateS": [
+			3,
+			4,
+			5
+		]
 	},
 	{
-		"id": "34",
+		"id": 34,
 		"name": "Guppy",
 		"found": "River",
-		"size": "Smallest",
-		"price": "1,300",
-		"timeString": "9 am - 4 pm",
-		"time": [9,10,11,12,13,14,15,16],
+		"foundCategory": 2,
+		"size": "X-Small",
+		"sizeCategory": 1,
+		"price": "1300",
+		"rarity": "Common",
+		"rarityCategory": 1,
+		"timeString": "9 a.m. - 4 p.m.",
+		"time": [
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16
+		],
 		"dateStringN": "April-November",
 		"dateStringS": "October-May",
-		"dateN": [4,5,6,7,8,9,10,11],
-		"dateS": [10,11,12,1,2,3,4,5]
+		"dateN": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11
+		],
+		"dateS": [
+			10,
+			11,
+			12,
+			1,
+			2,
+			3,
+			4,
+			5
+		]
 	},
 	{
-		"id": "35",
+		"id": 35,
 		"name": "Nibble Fish",
 		"found": "River",
-		"size": "Small",
-		"price": "1,500",
-		"timeString": "9 am - 4 pm",
-		"time": [9,10,11,12,13,14,15,16],
+		"foundCategory": 2,
+		"size": "X-Small",
+		"sizeCategory": 1,
+		"price": "1500",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "9 a.m. - 4 p.m.",
+		"time": [
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16
+		],
 		"dateStringN": "May-September",
 		"dateStringS": "November-March",
-		"dateN": [5,6,7,8,9],
-		"dateS": [11,12,1,2,3]
+		"dateN": [
+			5,
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			11,
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "36",
+		"id": 36,
 		"name": "Angelfish",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Small",
-		"price": "3,000",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"sizeCategory": 2,
+		"price": "3000",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "May-October",
 		"dateStringS": "November-April",
-		"dateN": [5,6,7,8,9,10],
-		"dateS": [11,12,1,2,3,4]
+		"dateN": [
+			5,
+			6,
+			7,
+			8,
+			9,
+			10
+		],
+		"dateS": [
+			11,
+			12,
+			1,
+			2,
+			3,
+			4
+		]
 	},
 	{
-		"id": "37",
+		"id": 37,
 		"name": "Betta",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Small",
-		"price": "2,500",
-		"timeString": "9 am - 4 pm",
-		"time": [9,10,11,12,13,14,15,16],
+		"sizeCategory": 2,
+		"price": "2500",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "9 a.m. - 4 p.m.",
+		"time": [
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16
+		],
 		"dateStringN": "May-October",
 		"dateStringS": "November-April",
-		"dateN": [5,6,7,8,9,10],
-		"dateS": [11,12,1,2,3,4]
+		"dateN": [
+			5,
+			6,
+			7,
+			8,
+			9,
+			10
+		],
+		"dateS": [
+			11,
+			12,
+			1,
+			2,
+			3,
+			4
+		]
 	},
 	{
-		"id": "38",
+		"id": 38,
 		"name": "Neon Tetra",
 		"found": "River",
-		"size": "Smallest",
+		"foundCategory": 2,
+		"size": "X-Small",
+		"sizeCategory": 1,
 		"price": "500",
-		"timeString": "9 am - 4 pm",
-		"time": [9,10,11,12,13,14,15,16],
+		"rarity": "Common",
+		"rarityCategory": 1,
+		"timeString": "9 a.m. - 4 p.m.",
+		"time": [
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16
+		],
 		"dateStringN": "April-November",
 		"dateStringS": "October-May",
-		"dateN": [4,5,6,7,8,9,10,11],
-		"dateS": [10,11,12,1,2,3,4,5]
+		"dateN": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11
+		],
+		"dateS": [
+			10,
+			11,
+			12,
+			1,
+			2,
+			3,
+			4,
+			5
+		]
 	},
 	{
-		"id": "39",
+		"id": 39,
 		"name": "Rainbowfish",
 		"found": "River",
-		"size": "Small",
+		"foundCategory": 2,
+		"size": "X-Small",
+		"sizeCategory": 1,
 		"price": "800",
-		"timeString": "9 am - 4 pm",
-		"time": [9,10,11,12,13,14,15,16],
+		"rarity": "Common",
+		"rarityCategory": 1,
+		"timeString": "9 a.m. - 4 p.m.",
+		"time": [
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16
+		],
 		"dateStringN": "May-October",
 		"dateStringS": "November-April",
-		"dateN": [5,6,7,8,9,10],
-		"dateS": [11,12,1,2,3,4]
+		"dateN": [
+			5,
+			6,
+			7,
+			8,
+			9,
+			10
+		],
+		"dateS": [
+			11,
+			12,
+			1,
+			2,
+			3,
+			4
+		]
 	},
 	{
-		"id": "40",
+		"id": 40,
 		"name": "Piranha",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Small",
-		"price": "2,500",
-		"timeString": "9 am - 4 pm",
-		"time": [9,10,11,12,13,14,15,16],
+		"sizeCategory": 2,
+		"price": "2500",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "9 a.m. - 4 p.m., 9 p.m. - 4 a.m.",
+		"time": [
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16,
+			null,
+			1,
+			2,
+			3,
+			4,
+			21,
+			22,
+			null
+		],
 		"dateStringN": "June-September",
 		"dateStringS": "December-March",
-		"dateN": [6,7,8,9],
-		"dateS": [12,1,2,3]
+		"dateN": [
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "41",
+		"id": 41,
 		"name": "Arowana",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Large",
-		"price": "10,000",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"sizeCategory": 5,
+		"price": "10000",
+		"rarity": "Rare",
+		"rarityCategory": 3,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "June-September",
 		"dateStringS": "December-March",
-		"dateN": [6,7,8,9],
-		"dateS": [12,1,2,3]
+		"dateN": [
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "42",
+		"id": 42,
 		"name": "Dorado",
 		"found": "River",
-		"size": "X Large",
-		"price": "15,000",
-		"timeString": "4 am - 9 pm",
-		"time": [4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+		"foundCategory": 2,
+		"size": "X-Large",
+		"sizeCategory": 6,
+		"price": "15000",
+		"rarity": "Ultra-rare",
+		"rarityCategory": 4,
+		"timeString": "4 a.m. - 9 p.m.",
+		"time": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21
+		],
 		"dateStringN": "June-September",
 		"dateStringS": "December-March",
-		"dateN": [6,7,8,9],
-		"dateS": [12,1,2,3]
+		"dateN": [
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "43",
+		"id": 43,
 		"name": "Gar",
 		"found": "Pond",
-		"size": "Largest",
-		"price": "6,000",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"foundCategory": 1,
+		"size": "X-Large",
+		"sizeCategory": 6,
+		"price": "6000",
+		"rarity": "Rare",
+		"rarityCategory": 3,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "June-September",
 		"dateStringS": "December-March",
-		"dateN": [6,7,8,9],
-		"dateS": [12,1,2,3]
+		"dateN": [
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "44",
+		"id": 44,
 		"name": "Arapaima",
 		"found": "River",
-		"size": "Largest",
-		"price": "10,000",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"foundCategory": 2,
+		"size": "XX-Large",
+		"sizeCategory": 7,
+		"price": "10000",
+		"rarity": "Rare",
+		"rarityCategory": 3,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "June-September",
 		"dateStringS": "December-March",
-		"dateN": [6,7,8,9],
-		"dateS": [12,1,2,3]
+		"dateN": [
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "45",
+		"id": 45,
 		"name": "Saddled Bichir",
 		"found": "River",
+		"foundCategory": 2,
 		"size": "Large",
-		"price": "4,000",
-		"timeString": "9 pm - 4 am",
-		"time": [0,1,2,3,4,21,22,23],
+		"sizeCategory": 5,
+		"price": "4000",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "9 p.m. - 4 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "June-September",
 		"dateStringS": "December-March",
-		"dateN": [6,7,8,9],
-		"dateS": [12,1,2,3]
+		"dateN": [
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "46",
+		"id": 46,
 		"name": "Sturgeon",
 		"found": "River (mouth)",
-		"size": "Largest",
-		"price": "10,000",
+		"foundCategory": 2,
+		"size": "XX-Large",
+		"sizeCategory": 7,
+		"price": "10000",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "September-March",
 		"dateStringS": "March-September",
-		"dateN": [9,10,11,12,1,2,3],
-		"dateS": [3,4,5,6,7,8,9]
+		"dateN": [
+			9,
+			10,
+			11,
+			12,
+			1,
+			2,
+			3
+		],
+		"dateS": [
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9
+		]
 	},
 	{
-		"id": "47",
+		"id": 47,
 		"name": "Sea Butterfly",
 		"found": "Sea",
-		"size": "Smallest",
-		"price": "1,000",
+		"foundCategory": 3,
+		"size": "X-Small",
+		"sizeCategory": 1,
+		"price": "1000",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "December-March",
 		"dateStringS": "June-September",
-		"dateN": [12,1,2,3],
-		"dateS": [6,7,8,9]
+		"dateN": [
+			12,
+			1,
+			2,
+			3
+		],
+		"dateS": [
+			6,
+			7,
+			8,
+			9
+		]
 	},
 	{
-		"id": "48",
+		"id": 48,
 		"name": "Sea Horse",
 		"found": "Sea",
-		"size": "Smallest",
-		"price": "1,100",
+		"foundCategory": 3,
+		"size": "X-Small",
+		"sizeCategory": 1,
+		"price": "1100",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "April-November",
 		"dateStringS": "October-May",
-		"dateN": [4,5,6,7,8,9,10,11],
-		"dateS": [10,11,12,1,2,3,4,5]
+		"dateN": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11
+		],
+		"dateS": [
+			10,
+			11,
+			12,
+			1,
+			2,
+			3,
+			4,
+			5
+		]
 	},
 	{
-		"id": "49",
+		"id": 49,
 		"name": "Clown Fish",
 		"found": "Sea",
-		"size": "Smallest",
+		"foundCategory": 3,
+		"size": "X-Small",
+		"sizeCategory": 1,
 		"price": "650",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "April-September",
 		"dateStringS": "October-March",
-		"dateN": [4,5,6,7,8,9],
-		"dateS": [10,11,12,1,2,3]
+		"dateN": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			10,
+			11,
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "50",
+		"id": 50,
 		"name": "Surgeonfish",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Small",
-		"price": "1,000",
+		"sizeCategory": 2,
+		"price": "1000",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "April-September",
 		"dateStringS": "October-March",
-		"dateN": [4,5,6,7,8,9],
-		"dateS": [10,11,12,1,2,3]
+		"dateN": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			10,
+			11,
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "51",
+		"id": 51,
 		"name": "Butterfly Fish",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Small",
-		"price": "1,000",
+		"sizeCategory": 2,
+		"price": "1000",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "April-September",
 		"dateStringS": "October-March",
-		"dateN": [4,5,6,7,8,9],
-		"dateS": [10,11,12,1,2,3]
+		"dateN": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			10,
+			11,
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "52",
+		"id": 52,
 		"name": "Napoleonfish",
 		"found": "Sea",
-		"size": "Largest",
-		"price": "10,000",
-		"timeString": "4 am - 9 pm",
-		"time": [4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+		"foundCategory": 3,
+		"size": "XX-Large",
+		"sizeCategory": 7,
+		"price": "10000",
+		"rarity": "Rare",
+		"rarityCategory": 3,
+		"timeString": "4 a.m. - 9 p.m.",
+		"time": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21
+		],
 		"dateStringN": "July-August",
 		"dateStringS": "January-February",
-		"dateN": [7,8],
-		"dateS": [1,2]
+		"dateN": [
+			7,
+			8
+		],
+		"dateS": [
+			1,
+			2
+		]
 	},
 	{
-		"id": "53",
+		"id": 53,
 		"name": "Zebra Turkeyfish",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Medium",
+		"sizeCategory": 3,
 		"price": "500",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "April-November",
 		"dateStringS": "October-May",
-		"dateN": [4,5,6,7,8,9,10,11],
-		"dateS": [10,11,12,1,2,3,4,5]
+		"dateN": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11
+		],
+		"dateS": [
+			10,
+			11,
+			12,
+			1,
+			2,
+			3,
+			4,
+			5
+		]
 	},
 	{
-		"id": "54",
+		"id": 54,
 		"name": "Blowfish",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Medium",
-		"price": "5,000",
-		"timeString": "6 pm - 4 am",
-		"time": "6 pm - 4 am",
+		"sizeCategory": 3,
+		"price": "5000",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "9 p.m. - 5 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "November-February",
 		"dateStringS": "May-August",
-		"dateN": [11,12,1,2],
-		"dateS": [5,6,7,8]
+		"dateN": [
+			11,
+			12,
+			1,
+			2
+		],
+		"dateS": [
+			5,
+			6,
+			7,
+			8
+		]
 	},
 	{
-		"id": "55",
+		"id": 55,
 		"name": "Puffer Fish",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Medium",
+		"sizeCategory": 3,
 		"price": "250",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "July-September",
 		"dateStringS": "January-March",
-		"dateN": [7,8,9],
-		"dateS": [1,2,3]
+		"dateN": [
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "56",
+		"id": 56,
 		"name": "Anchovy",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Small",
+		"sizeCategory": 2,
 		"price": "200",
-		"timeString": "4 am - 9 pm",
-		"time": [4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+		"rarity": "Common",
+		"rarityCategory": 1,
+		"timeString": "4 a.m. - 9 p.m.",
+		"time": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "57",
+		"id": 57,
 		"name": "Horse Mackerel",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Small",
+		"sizeCategory": 2,
 		"price": "150",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "58",
+		"id": 58,
 		"name": "Barred Knifejaw",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Medium",
-		"price": "5,000",
+		"sizeCategory": 3,
+		"price": "5000",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "March-November",
 		"dateStringS": "September-May",
-		"dateN": [3,4,5,6,7,8,9,10,11],
-		"dateS": [9,10,11,12,1,2,3,4,5]
+		"dateN": [
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11
+		],
+		"dateS": [
+			9,
+			10,
+			11,
+			12,
+			1,
+			2,
+			3,
+			4,
+			5
+		]
 	},
 	{
-		"id": "59",
+		"id": 59,
 		"name": "Sea Bass",
 		"found": "Sea",
-		"size": "X Large",
+		"foundCategory": 3,
+		"size": "X-Large",
+		"sizeCategory": 6,
 		"price": "400",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "60",
+		"id": 60,
 		"name": "Red Snapper",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Large",
-		"price": "3,000",
+		"sizeCategory": 5,
+		"price": "3000",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "61",
+		"id": 61,
 		"name": "Dab",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Medium",
+		"sizeCategory": 3,
 		"price": "300",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "October-April",
 		"dateStringS": "April-October",
-		"dateN": [10,11,12,1,2,3,4],
-		"dateS": [4,5,6,7,8,9,10]
+		"dateN": [
+			10,
+			11,
+			12,
+			1,
+			2,
+			3,
+			4
+		],
+		"dateS": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10
+		]
 	},
 	{
-		"id": "62",
+		"id": 62,
 		"name": "Olive Flounder",
 		"found": "Sea",
-		"size": "Large",
+		"foundCategory": 3,
+		"size": "X-Large",
+		"sizeCategory": 6,
 		"price": "800",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "63",
+		"id": 63,
 		"name": "Squid",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Medium",
+		"sizeCategory": 3,
 		"price": "500",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "December-August",
 		"dateStringS": "June-February",
-		"dateN": [12,1,2,3,4,5,6,7,8],
-		"dateS": [6,7,8,9,10,11,12,1,2]
+		"dateN": [
+			12,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8
+		],
+		"dateS": [
+			6,
+			7,
+			8,
+			9,
+			10,
+			11,
+			12,
+			1,
+			2
+		]
 	},
 	{
-		"id": "64",
+		"id": 64,
 		"name": "Moray Eel",
 		"found": "Sea",
-		"size": "X Large",
-		"price": "2,000",
+		"foundCategory": 3,
+		"size": "Long",
+		"sizeCategory": 4,
+		"price": "2000",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "August-October",
 		"dateStringS": "February-April",
-		"dateN": [8,9,10],
-		"dateS": [2,3,4]
+		"dateN": [
+			8,
+			9,
+			10
+		],
+		"dateS": [
+			2,
+			3,
+			4
+		]
 	},
 	{
-		"id": "65",
+		"id": 65,
 		"name": "Ribbon Eel",
 		"found": "Sea",
-		"size": "Narrow",
+		"foundCategory": 3,
+		"size": "Long",
+		"sizeCategory": 4,
 		"price": "600",
+		"rarity": "Common",
+		"rarityCategory": 1,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "June-October",
 		"dateStringS": "December-April",
-		"dateN": [6,7,8,9,10],
-		"dateS": [12,1,2,3,4]
+		"dateN": [
+			6,
+			7,
+			8,
+			9,
+			10
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3,
+			4
+		]
 	},
 	{
-		"id": "66",
+		"id": 66,
 		"name": "Tuna",
 		"found": "Pier",
-		"size": "X Large",
-		"price": "7,000",
+		"foundCategory": 4,
+		"size": "XX-Large",
+		"sizeCategory": 7,
+		"price": "7000",
+		"rarity": "Rare",
+		"rarityCategory": 3,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "November-April",
 		"dateStringS": "May-October",
-		"dateN": [11,12,1,2,3,4],
-		"dateS": [5,6,7,8,9,10]
+		"dateN": [
+			11,
+			12,
+			1,
+			2,
+			3,
+			4
+		],
+		"dateS": [
+			5,
+			6,
+			7,
+			8,
+			9,
+			10
+		]
 	},
 	{
-		"id": "67",
+		"id": 67,
 		"name": "Blue Marlin",
 		"found": "Pier",
-		"size": "X Large",
-		"price": "10,000",
+		"foundCategory": 4,
+		"size": "XX-Large",
+		"sizeCategory": 7,
+		"price": "10000",
+		"rarity": "Rare",
+		"rarityCategory": 3,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "July-September, November-April",
 		"dateStringS": "January-March, May-November",
-		"dateN": [7,8,9,11,12,1,2,3,4],
-		"dateS": [1,2,3,5,6,7,8,9,10,11]
+		"dateN": [
+			7,
+			8,
+			9,
+			11,
+			12,
+			1,
+			2,
+			3,
+			4
+		],
+		"dateS": [
+			1,
+			2,
+			3,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11
+		]
 	},
 	{
-		"id": "68",
+		"id": 68,
 		"name": "Giant Trevally",
 		"found": "Pier",
-		"size": "Large",
-		"price": "4,500",
+		"foundCategory": 4,
+		"size": "X-Large",
+		"sizeCategory": 6,
+		"price": "4500",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "May-October",
 		"dateStringS": "November-April",
-		"dateN": [5,6,7,8,9,10],
-		"dateS": [11,12,1,2,3,4]
+		"dateN": [
+			5,
+			6,
+			7,
+			8,
+			9,
+			10
+		],
+		"dateS": [
+			11,
+			12,
+			1,
+			2,
+			3,
+			4
+		]
 	},
 	{
-		"id": "69",
+		"id": 69,
 		"name": "Mahi-mahi",
-		"found": "Sea",
-		"size": "Large",
-		"price": "6,000",
+		"found": "Pier",
+		"foundCategory": 4,
+		"size": "X-Large",
+		"sizeCategory": 6,
+		"price": "6000",
+		"rarity": "Rare",
+		"rarityCategory": 3,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "May-October",
 		"dateStringS": "November-April",
-		"dateN": [5,6,7,8,9,10],
-		"dateS": [11,12,1,2,3,4]
+		"dateN": [
+			5,
+			6,
+			7,
+			8,
+			9,
+			10
+		],
+		"dateS": [
+			11,
+			12,
+			1,
+			2,
+			3,
+			4
+		]
 	},
 	{
-		"id": "70",
+		"id": 70,
 		"name": "Ocean Sunfish",
 		"found": "Sea",
-		"size": "Largest (Fin)",
-		"price": "4,000",
-		"timeString": "4 am - 9 pm",
-		"time": [4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+		"foundCategory": 3,
+		"size": "Large w/Fin",
+		"sizeCategory": 9,
+		"price": "4000",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "4 a.m. - 9 p.m.",
+		"time": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21
+		],
 		"dateStringN": "July-September",
 		"dateStringS": "January-March",
-		"dateN": [7,8,9],
-		"dateS": [1,2,3]
+		"dateN": [
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "71",
+		"id": 71,
 		"name": "Ray",
 		"found": "Sea",
-		"size": "X Large",
-		"price": "3,000",
-		"timeString": "4 am - 9 pm",
-		"time": [4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+		"foundCategory": 3,
+		"size": "X-Large",
+		"sizeCategory": 6,
+		"price": "3000",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "4 a.m. - 9 p.m.",
+		"time": [
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21
+		],
 		"dateStringN": "August-November",
 		"dateStringS": "February-May",
-		"dateN": [8,9,10,11],
-		"dateS": [2,3,4,5]
+		"dateN": [
+			8,
+			9,
+			10,
+			11
+		],
+		"dateS": [
+			2,
+			3,
+			4,
+			5
+		]
 	},
 	{
-		"id": "72",
+		"id": 72,
 		"name": "Saw Shark",
 		"found": "Sea",
-		"size": "Largest (Fin)",
-		"price": "12,000",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"foundCategory": 3,
+		"size": "Large w/Fin",
+		"sizeCategory": 9,
+		"price": "12000",
+		"rarity": "Rare",
+		"rarityCategory": 3,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "June-September",
 		"dateStringS": "December-March",
-		"dateN": [6,7,8,9],
-		"dateS": [12,1,2,3]
+		"dateN": [
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "73",
+		"id": 73,
 		"name": "Hammerhead Shark",
 		"found": "Sea",
-		"size": "Largest (Fin)",
-		"price": "8,000",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"foundCategory": 3,
+		"size": "Large w/Fin",
+		"sizeCategory": 9,
+		"price": "8000",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "June-September",
 		"dateStringS": "December-March",
-		"dateN": [6,7,8,9],
-		"dateS": [12,1,2,3]
+		"dateN": [
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "74",
+		"id": 74,
 		"name": "Great White Shark",
 		"found": "Sea",
-		"size": "Largest (Fin)",
-		"price": "15,000",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"foundCategory": 3,
+		"size": "Large w/Fin",
+		"sizeCategory": 9,
+		"price": "15000",
+		"rarity": "Rare",
+		"rarityCategory": 3,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "June-September",
 		"dateStringS": "December-March",
-		"dateN": [6,7,8,9],
-		"dateS": [12,1,2,3]
+		"dateN": [
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "75",
+		"id": 75,
 		"name": "Whale Shark",
 		"found": "Sea",
-		"size": "Largest (Fin)",
-		"price": "13,000",
+		"foundCategory": 3,
+		"size": "Large w/Fin",
+		"sizeCategory": 9,
+		"price": "13000",
+		"rarity": "Rare",
+		"rarityCategory": 3,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "June-September",
 		"dateStringS": "December-March",
-		"dateN": [6,7,8,9],
-		"dateS": [12,1,2,3]
+		"dateN": [
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "76",
+		"id": 76,
 		"name": "Suckerfish",
 		"found": "Sea",
-		"size": "Large (Fin)",
-		"price": "1,500",
+		"foundCategory": 3,
+		"size": "Medium w/Fin",
+		"sizeCategory": 8,
+		"price": "1500",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "June-September",
 		"dateStringS": "December-March",
-		"dateN": [6,7,8,9],
-		"dateS": [12,1,2,3]
+		"dateN": [
+			6,
+			7,
+			8,
+			9
+		],
+		"dateS": [
+			12,
+			1,
+			2,
+			3
+		]
 	},
 	{
-		"id": "77",
+		"id": 77,
 		"name": "Football Fish",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Large",
-		"price": "2,500",
-		"timeString": "4 pm - 9 am",
-		"time": [0,1,2,3,4,5,6,7,8,9,16,17,18,19,20,21,22,23],
+		"sizeCategory": 5,
+		"price": "2500",
+		"rarity": "Uncommon",
+		"rarityCategory": 2,
+		"timeString": "4 p.m. - 9 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			16,
+			17,
+			18,
+			19,
+			20,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "November-March",
 		"dateStringS": "May-September",
-		"dateN": [11,12,1,2,3],
-		"dateS": [5,6,7,8,9]
+		"dateN": [
+			11,
+			12,
+			1,
+			2,
+			3
+		],
+		"dateS": [
+			5,
+			6,
+			7,
+			8,
+			9
+		]
 	},
 	{
-		"id": "78",
+		"id": 78,
 		"name": "Oarfish",
 		"found": "Sea",
-		"size": "Largest",
-		"price": "9,000",
+		"foundCategory": 3,
+		"size": "XX-Large",
+		"sizeCategory": 7,
+		"price": "9000",
+		"rarity": "Rare",
+		"rarityCategory": 3,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "December-May",
 		"dateStringS": "June-November",
-		"dateN": [12,1,2,3,4,5],
-		"dateS": [6,7,8,9,10,11]
+		"dateN": [
+			12,
+			1,
+			2,
+			3,
+			4,
+			5
+		],
+		"dateS": [
+			6,
+			7,
+			8,
+			9,
+			10,
+			11
+		]
 	},
 	{
-		"id": "79",
+		"id": 79,
 		"name": "Barreleye",
 		"found": "Sea",
+		"foundCategory": 3,
 		"size": "Small",
-		"price": "15,000",
-		"timeString": "9 pm - 4 am",
-		"time": [0,1,2,3,4,21,22,23],
+		"sizeCategory": 2,
+		"price": "15000",
+		"rarity": "Ultra-rare",
+		"rarityCategory": 4,
+		"timeString": "9 p.m. - 4 a.m.",
+		"time": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			21,
+			22,
+			23
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	},
 	{
-		"id": "80",
+		"id": 80,
 		"name": "Coelacanth",
-		"found": "Sea (rainy days)",
-		"size": "Largest",
-		"price": "15,000",
+		"found": "Sea (raining)",
+		"foundCategory": 3,
+		"size": "XX-Large",
+		"sizeCategory": 7,
+		"price": "15000",
+		"rarity": "Ultra-rare",
+		"rarityCategory": 4,
 		"timeString": "All day",
-		"time": [-1],
+		"time": [
+			-1
+		],
 		"dateStringN": "Year-round",
 		"dateStringS": "Year-round",
-		"dateN": [-1],
-		"dateS": [-1]
+		"dateN": [
+			-1
+		],
+		"dateS": [
+			-1
+		]
 	}
 ]

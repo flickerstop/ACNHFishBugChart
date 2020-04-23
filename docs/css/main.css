@@ -253,10 +253,28 @@ body{
     margin: 0;
 }
 
-.card-image{
+.card-image-bg{
+    background-image: url(../images/card-bg.png);
     width: 300px;
     height: 170px;
     overflow: initial;
+}
+.card-image-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.card-image{
+    max-height: 95px;
+    max-width: 280;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    filter: drop-shadow(0px 6px 0px #22222233);
+    -webkit-filter: drop-shadow(0px 6px 0px #22222233);
 }
 .card-title-container{
     width: fit-content;
