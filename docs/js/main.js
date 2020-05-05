@@ -104,13 +104,14 @@ function markDonate(type,id){
     // If hide donated critter setting enabled then hide card, else add the owl stamp
     if (!webStorage.settings.showDonated) { 
         // Start the fade out effect
-        d3.select(`#critter${id}`).classed("fadeout", true);
+        //d3.select(`#${type}${id}`).classed("fadeout", true);
+        d3.select(`#${type}${id}-owlstamp`).classed("zoom", !critterDonated);
         // Hide the element after the fade animation, make sure to match timeout delay with 
         // .card css class transition property (ex. transition: all 0.3s linear)
-        setTimeout(()=>{d3.select(`#critter${id}`).style("display","none");}, 300)
+        setTimeout(()=>{d3.select(`#${type}${id}`).style("display","none");}, 300)
     }else{
         // Start owl stamp zoom effect
-        d3.select(`#critter${id}-owlstamp`).classed("zoom", !critterDonated);
+        d3.select(`#${type}${id}-owlstamp`).classed("zoom", !critterDonated);
     }
     
 }

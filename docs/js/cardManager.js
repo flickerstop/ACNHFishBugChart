@@ -94,7 +94,8 @@ function addCritterCard(critter, critterType, container){
     
     let donateList = critterType=="fish"?webStorage.donated.fish:webStorage.donated.bugs;
 
-    let cardContainer = container.append("div").attr("class","mdc-card mdc-elevation--z3 card").attr("id", `critter${critter.id}`).style("display","none");
+    let cardContainer = container.append("div").attr("class","mdc-card mdc-elevation--z3 card")
+        .attr("id", `${critterType}${critter.id}`).style("display","none");
 
     let card = cardContainer.append("div").attr("class","mdc-card__primary-action");
 
@@ -113,15 +114,15 @@ function addCritterCard(critter, critterType, container){
     if(donateList.includes(critter.id)){
         card.append("div").attr("class","card-owlstamp")
             .append("div").attr("class","card-owlstamp-image")
-            .attr("id",`critter${critter.id}-owlstamp`);
+            .attr("id",`${critterType}${critter.id}-owlstamp`);
 
     }else{
         card.append("div").attr("class","card-owlstamp")
             .append("div").attr("class","card-owlstamp-image zoom")
-            .attr("id",`critter${critter.id}-owlstamp`)
+            .attr("id",`${critterType}${critter.id}-owlstamp`)
             .style("display", "none");
 
-        setTimeout(()=>{d3.select(`#critter${critter.id}-owlstamp`).style("display","");}, 600)
+        setTimeout(()=>{d3.select(`#${critterType}${critter.id}-owlstamp`).style("display","");}, 600)
     }
 
     // Fish Size
