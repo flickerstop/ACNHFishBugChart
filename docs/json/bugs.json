@@ -316,7 +316,7 @@
 	},
 	{
 		"id": 8,
-		"name": "Monach Butterfly",
+		"name": "Monarch Butterfly",
 		"found": "Flying near flowers",
 		"foundCategory": 2,
 		"weather": 1,
@@ -1594,7 +1594,7 @@
 	},
 	{
 		"id": 42,
-		"name": "Man-faced Stink Bug",
+		"name": "Man-Faced Stink Bug",
 		"found": "On flowers",
 		"foundCategory": 2,
 		"weather": 1,
@@ -1885,7 +1885,7 @@
 	},
 	{
 		"id": 51,
-		"name": "Earth-boring Dung Beetle",
+		"name": "Earth-Boring Dung Beetle",
 		"found": "On trees",
 		"foundCategory": 4,
 		"weather": 0,
