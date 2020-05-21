@@ -86,7 +86,7 @@ function showSearchedCards(validCards){
 
 
 /**
- * 
+ * This creates the card element on the page.
  * @param {Object} critter JSON object holding the critter info
  * @param {String} critterType "fish" or "bug"
  */
